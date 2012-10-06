@@ -1,0 +1,173 @@
+﻿body 
+{
+   background-image:url("/Content/manifest/images/Borders.png");
+   background-position:top;
+   height:100%;
+}
+a:link
+{
+    color: #C75B37;
+    text-decoration: none;
+}
+a:visited
+{
+    color: #AB7C34;
+}
+a:hover
+{
+    color: #C75B37;
+    text-decoration: underline;
+}
+a:active
+{
+    color: #AB7C34;
+}
+ul,li
+{
+   margin-top:0px;
+   margin-bottom:0px;
+}
+p
+{
+    margin-bottom: 20px;
+}
+hr
+{
+   border-style:none;
+   border-bottom-color:#CCC6AE;
+   border-bottom-style:dashed;
+   height:1px;
+   width:90%;
+}
+/* HEADINGS   
+----------------------------------------------------------*/
+h1,h3,h4,h5,h6
+{
+    color: #161c2b;
+    font-family:Ariel,Sans-serif;
+    padding: 0 0 0 0;
+}
+
+h1
+{
+    font-size: 3em;
+    padding: 10px 0px 0px 0px;
+    margin: 0px 20px 0px 20px;
+}
+h2
+{
+    font-size: 2em;
+}
+h3
+{
+    font-size: 1.5em;
+}
+h4
+{
+    font-size: 1.2em;
+}
+h5 
+{
+   font-size:1em;
+}
+/* this rule styles <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0;
+}
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+#PageContainer
+{
+   background-image:url("../images/StoryAndArtBannerFlat.png");
+   background-position:top;
+   background-repeat:repeat-x;
+   width: 800px;
+   min-height:100%;
+   height:auto !important;
+   height:100%;
+   margin: 0px auto -120px;
+   font-size:0.75em;
+   font-family: Verdana, Helvetica, Sans-Serif;
+   color:#333123;
+}
+#Footer 
+{
+   margin: 0 auto;
+   padding:0px 0px 0px 0px;
+   font-size:0.75em;
+   font-family: Verdana, Helvetica, Sans-Serif;
+	height:120px;
+	width:800px;
+	background-color:#161c2a;
+	color:#CCC6AE;
+}
+#Footer h3 
+{
+   padding:10px 0 5px 50px;
+   color:#AB7C34;
+}
+#Footer p 
+{
+   color:#CCC6AE;
+   padding: 0 50px 0 50px;
+}
+#Footer .powered
+{
+   padding-top:20px;
+   position:relative;
+   font-size:smaller;
+   text-align:center;
+}
+/* TAB MENU   
+----------------------------------------------------------*/
+ul#menu
+{
+    padding: 0px;
+    position: relative;
+    margin: -140px 0 0 550px;
+    padding-top:92px;
+    text-align: left;
+}
+
+ul#menu li
+{
+    display: inline;
+    list-style: none;
+}
+
+ul#menu li a
+{
+    padding: 0px 10px;
+    font-weight:normal;
+    text-decoration: none;
+    line-height: 2.8em;
+    color: #CCC6AE;
+}
+
+ul#menu li a:hover
+{
+    background-color: #161c2b;
+    color:#C75B37;
+    border-top-color:#C75B37;
+    border-top-style:solid;
+    border-top-width:medium;
+    padding-top:8px;
+    padding-bottom:5px;
+    text-decoration: none;
+}
+
+ul#menu li a:active
+{
+    background-color: #eeca77;
+    text-decoration: none;
+}
+
+ul#menu li.selected a
+{
+    background-color: #fff;
+    color: #000;
+}

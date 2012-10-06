@@ -1,0 +1,109 @@
+﻿/* Steampunk2: #260101, #400D01, #733E1F, #8C5627, #B4874E */
+
+h1,h2,h3,h4,h5,h6,header
+{
+   margin:0px;
+}
+
+html,body
+{
+   background-color:#733E1F;
+   height:100%
+}
+nav
+{
+   background-color:Olive;
+   position:absolute; 
+}
+#pageHeader
+{
+   height:64px;
+}
+#pageHeader h1
+{
+   color:#B4874E;
+}
+#topNav
+{
+   right:10px;
+   top:20px;
+}
+#blogNav
+{
+   right:12%;
+}
+
+#pageContainer
+{
+   background-image:url('../images/oldMapOverlay.png');
+   background-repeat:repeat-x;
+   background-color:#733E1F;
+   position:relative;
+   width:100%;
+   max-width:1366px;
+   margin:auto;
+}
+
+#pageContainer h4
+{
+   color:#B4874E;
+   width:800px;
+   margin:auto;
+}
+
+#blogContainer
+{
+   background-color:#400D01;
+   position:relative;
+   margin:10px auto;
+   width:100%;
+   height:100%;
+   min-height:100%;
+}
+
+#comic
+{
+   background-image: url('../../../comics/Eden/Eden001.jpg');
+   position:relative;
+   width:800px;
+   height:480px;
+   margin:auto;
+}
+
+#blogContainer heaader
+{
+   position:relative;
+   width:100%;
+   padding-left:12%;
+   max-width:1366px;
+}
+
+header h2
+{
+   background-color:#260101;
+   color:#B4874E;
+   padding-left:12%;
+}
+
+#blogContent
+{
+   position:relative;
+   width:60%;
+   margin:0px;
+   padding-top:1%;
+   padding-left:12%;
+   padding-bottom:2%;
+}
+
+#blogContent p
+{
+   color:#8C6D37;
+}
+
+#categories
+{
+   color:#8C6D37;
+   padding-top:1.5%;
+   float:right;
+   width:25%;
+}

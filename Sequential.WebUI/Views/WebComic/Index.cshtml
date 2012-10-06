@@ -1,0 +1,23 @@
+﻿@model BlogHomeVModel
+@{
+    Layout = "~/Views/Shared/EdenLayout.cshtml";
+}
+      @Html.Partial("ComicImages") 
+      <div id="blogContainer">         
+         <div id="categories">
+            <h1>Story So Far</h1>
+         <p>Stranded stewardess Holly Richey thought she got lucky in getting on a
+         transient transport flight for an early return trip to London. Unfortunately, things
+         seem to have taken a turn for the worse...</p>
+            <br />
+            <h3>Categories</h3>
+            <ul>
+               <li>Cool site 1</li>
+               <li>Awesome site 2</li>
+               <li>Even nicer site 3</li>
+            </ul>
+         </div>
+         <div id="blogContent">
+            @Html.Partial("BlogPost",Model.RecentPosts)            
+         </div>
+      </div>

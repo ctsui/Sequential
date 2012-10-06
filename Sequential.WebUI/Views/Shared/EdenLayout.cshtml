@@ -1,0 +1,22 @@
+﻿@* A layout for Eden is largely superflous since this could have all been done with just the
+index page and partial pages. It has been included as an example of site master templating. *@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Eden Expedition</title>
+    <link href="@Url.Content("~/content/themes/eden/css/africanSafari.css")" rel="Stylesheet" type="text/css"/>
+</head>
+<body>
+   <div id="pageContainer">
+      <header id="pageHeader">
+         <img id="logo" src="@Url.Content("~/content/themes/eden/images/EdenExpedition54.png")" />
+         <div id="socialNetworks">
+            <img id="rss" width="32" height="32" src="@Url.Content("~/content/themes/eden/images/rss.png")" />
+            <img id="twitter" width="32" height="32" src="@Url.Content("~/content/themes/eden/images/Twitter.png")" />
+         </div>
+      </header>
+      @RenderBody() 
+      <footer>Copyright 2012 Carl Tsui</footer>
+   </div>
+</body>
+</html>

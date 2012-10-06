@@ -1,0 +1,48 @@
+﻿@model Sequential2013.Domain.Models.WebComicVModel
+@{
+   string NextPage = Convert.ToString(Model.PageNumber + 1);
+   int prev = Model.PageNumber - 1;
+   if (prev < 1) {
+      prev = 1;
+   }
+   string PrevPage = Convert.ToString(prev);
+   string ImagePath = "~/content/comics/Eden/"+@Model.FileName()+".jpg";
+}
+      <div id="main">
+         <div id="comic">
+            <div id="slot1" class="slot"><img width="800" height="480" 
+            src="@Url.Content(@ImagePath)"/></div>
+         </div>
+      </div>
+      <nav id="pageNav">
+         @for (int i=1; i<23; i++)
+         {
+            @Html.ActionLink(Convert.ToString(i),"Comic",
+            new {
+               comic="eden",
+               chapter = @Model.ChapterNumber,
+               page = Convert.ToString(i),
+               perma = @Model.GetFeaturedPost(),
+               id = @Model.GetFeaturedPostId()
+            })
+            <span>&nbsp;</span>
+         }
+         
+         @Html.ActionLink("Prev","Comic",
+         new {
+            comic="eden",
+            chapter = @Model.ChapterNumber,
+            page = @PrevPage,
+            perma = @Model.GetFeaturedPost(),
+            id = @Model.GetFeaturedPostId()
+         })
+         @Html.ActionLink("Next","Comic",
+         new {
+            comic="eden",
+            chapter = @Model.ChapterNumber,
+            page = @NextPage,
+            perma = @Model.GetFeaturedPost(),
+            id = @Model.GetFeaturedPostId()
+         })
+         <span>@Model.PageNumber of 23</span>
+      </nav>

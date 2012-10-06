@@ -1,0 +1,25 @@
+﻿/* Soviet
+Warm Grey - #CCC6AE
+Tan - #AB7C34
+Salmon - #C75B37
+Rust - #9B2312
+Red - #730D0D
+*/
+body 
+{
+   background-color: #730D0D;
+   color: #CCC6AE;
+   margin:0 auto;
+   text-align:center;
+}
+h1, h2, h3 
+{
+   color:White;
+   margin:0px;
+   padding:0px;
+}
+#Satelite
+{
+   margin:10px 0px 0px -50px 
+   
+}

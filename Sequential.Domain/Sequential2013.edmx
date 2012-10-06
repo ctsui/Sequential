@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Sequential2013.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="Sequential2013StoreContainer">
+    <EntitySet Name="SeqPages" EntityType="Sequential2013.Store.SeqPages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SeqChapters" EntityType="Sequential2013.Store.SeqChapters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SeqBooks" EntityType="Sequential2013.Store.SeqBooks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SeqPosts" EntityType="Sequential2013.Store.SeqPosts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SeqTags" EntityType="Sequential2013.Store.SeqTags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SeqCategories" EntityType="Sequential2013.Store.SeqCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SeqTagSeqPost" EntityType="Sequential2013.Store.SeqTagSeqPost" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="SeqBookSeqChapter" Association="Sequential2013.Store.SeqBookSeqChapter">
+      <End Role="SeqBook" EntitySet="SeqBooks" />
+      <End Role="SeqChapter" EntitySet="SeqChapters" />
+    </AssociationSet>
+    <AssociationSet Name="SeqChapterSeqPage" Association="Sequential2013.Store.SeqChapterSeqPage">
+      <End Role="SeqChapter" EntitySet="SeqChapters" />
+      <End Role="SeqPage" EntitySet="SeqPages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeqTagSeqPost_SeqTag" Association="Sequential2013.Store.FK_SeqTagSeqPost_SeqTag">
+      <End Role="SeqTag" EntitySet="SeqTags" />
+      <End Role="SeqTagSeqPost" EntitySet="SeqTagSeqPost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeqTagSeqPost_SeqPost" Association="Sequential2013.Store.FK_SeqTagSeqPost_SeqPost">
+      <End Role="SeqPost" EntitySet="SeqPosts" />
+      <End Role="SeqTagSeqPost" EntitySet="SeqTagSeqPost" />
+    </AssociationSet>
+    <AssociationSet Name="SeqCategorySeqPost" Association="Sequential2013.Store.SeqCategorySeqPost">
+      <End Role="SeqCategory" EntitySet="SeqCategories" />
+      <End Role="SeqPost" EntitySet="SeqPosts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SeqPages">
+    <Key>
+      <PropertyRef Name="PageId" />
+    </Key>
+    <Property Name="PageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="PageNum" Type="smallint" Nullable="true" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SeqChapterChapterId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SeqChapters">
+    <Key>
+      <PropertyRef Name="ChapterId" />
+    </Key>
+    <Property Name="ChapterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ChapterNum" Type="int" Nullable="true" />
+    <Property Name="SeqBookBookId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SeqBooks">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="PageCount" Type="int" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="UriContext" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="Featured" Type="bit" Nullable="false" />
+    <Property Name="CoverImage" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="1024" />
+  </EntityType>
+  <EntityType Name="SeqPosts">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="true" />
+    <Property Name="Published" Type="bit" Nullable="false" />
+    <Property Name="Excerpt" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedText" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Permalink" Type="nvarchar" Nullable="true" MaxLength="256" />
+    <Property Name="BlogId" Type="nvarchar" Nullable="true" MaxLength="64" />
+    <Property Name="SeqCategoryCategoryId" Type="int" Nullable="false" />
+    <Property Name="SeqCategory_CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SeqTags">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+    <Property Name="Tally" Type="int" Nullable="false" />
+    <Property Name="BlogId" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="SeqCategories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="Tally" Type="int" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+    <Property Name="BlogId" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="SeqTagSeqPost">
+    <Key>
+      <PropertyRef Name="SeqTags_TagId" />
+      <PropertyRef Name="SeqPosts_PostId" />
+    </Key>
+    <Property Name="SeqTags_TagId" Type="int" Nullable="false" />
+    <Property Name="SeqPosts_PostId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="SeqBookSeqChapter">
+    <End Role="SeqBook" Type="Sequential2013.Store.SeqBooks" Multiplicity="1" />
+    <End Role="SeqChapter" Type="Sequential2013.Store.SeqChapters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeqBook">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="SeqChapter">
+        <PropertyRef Name="SeqBookBookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SeqChapterSeqPage">
+    <End Role="SeqChapter" Type="Sequential2013.Store.SeqChapters" Multiplicity="1" />
+    <End Role="SeqPage" Type="Sequential2013.Store.SeqPages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeqChapter">
+        <PropertyRef Name="ChapterId" />
+      </Principal>
+      <Dependent Role="SeqPage">
+        <PropertyRef Name="SeqChapterChapterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SeqCategorySeqPost">
+    <End Role="SeqCategory" Type="Sequential2013.Store.SeqCategories" Multiplicity="1" />
+    <End Role="SeqPost" Type="Sequential2013.Store.SeqPosts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeqCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="SeqPost">
+        <PropertyRef Name="SeqCategory_CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SeqTagSeqPost_SeqTag">
+    <End Role="SeqTag" Type="Sequential2013.Store.SeqTags" Multiplicity="1" />
+    <End Role="SeqTagSeqPost" Type="Sequential2013.Store.SeqTagSeqPost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeqTag">
+        <PropertyRef Name="TagId" />
+      </Principal>
+      <Dependent Role="SeqTagSeqPost">
+        <PropertyRef Name="SeqTags_TagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SeqTagSeqPost_SeqPost">
+    <End Role="SeqTagSeqPost" Type="Sequential2013.Store.SeqTagSeqPost" Multiplicity="*" />
+    <End Role="SeqPost" Type="Sequential2013.Store.SeqPosts" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SeqPost">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="SeqTagSeqPost">
+        <PropertyRef Name="SeqPosts_PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Sequential2013" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="SeqEFContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SeqPages" EntityType="Sequential2013.SeqPage" />
+          <EntitySet Name="SeqChapters" EntityType="Sequential2013.SeqChapter" />
+          <EntitySet Name="SeqBooks" EntityType="Sequential2013.SeqBook" />
+          <AssociationSet Name="SeqBookSeqChapter" Association="Sequential2013.SeqBookSeqChapter">
+            <End Role="SeqBook" EntitySet="SeqBooks" />
+            <End Role="SeqChapter" EntitySet="SeqChapters" />
+          </AssociationSet>
+          <AssociationSet Name="SeqChapterSeqPage" Association="Sequential2013.SeqChapterSeqPage">
+            <End Role="SeqChapter" EntitySet="SeqChapters" />
+            <End Role="SeqPage" EntitySet="SeqPages" />
+          </AssociationSet>
+          <EntitySet Name="SeqPosts" EntityType="Sequential2013.SeqPost" />
+          <EntitySet Name="SeqTags" EntityType="Sequential2013.SeqTag" />
+          <EntitySet Name="SeqCategories" EntityType="Sequential2013.SeqCategory" />
+          <AssociationSet Name="SeqTagSeqPost" Association="Sequential2013.SeqTagSeqPost">
+            <End Role="SeqTag" EntitySet="SeqTags" />
+            <End Role="SeqPost" EntitySet="SeqPosts" />
+          </AssociationSet>
+          <AssociationSet Name="SeqCategorySeqPost" Association="Sequential2013.SeqCategorySeqPost">
+            <End Role="SeqCategory" EntitySet="SeqCategories" />
+            <End Role="SeqPost" EntitySet="SeqPosts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SeqPage">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Type="Int32" Name="PageId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FileName" Nullable="false" MaxLength="256" />
+          <Property Type="Int16" Name="PageNum" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" />
+          <NavigationProperty Name="SeqChapter" Relationship="Sequential2013.SeqChapterSeqPage" FromRole="SeqPage" ToRole="SeqChapter" />
+          <Property Type="Int32" Name="SeqChapterChapterId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeqChapter">
+          <Key>
+            <PropertyRef Name="ChapterId" />
+          </Key>
+          <Property Type="Int32" Name="ChapterId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="Int32" Name="ChapterNum" Nullable="true" />
+          <NavigationProperty Name="SeqBook" Relationship="Sequential2013.SeqBookSeqChapter" FromRole="SeqChapter" ToRole="SeqBook" />
+          <Property Type="Int32" Name="SeqBookBookId" Nullable="false" />
+          <NavigationProperty Name="SeqPages" Relationship="Sequential2013.SeqChapterSeqPage" FromRole="SeqChapter" ToRole="SeqPage" />
+        </EntityType>
+        <EntityType Name="SeqBook">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Type="Int32" Name="BookId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="256" />
+          <Property Type="Int32" Name="PageCount" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="UriContext" Nullable="false" MaxLength="256" />
+          <Property Type="Boolean" Name="Featured" Nullable="false" />
+          <Property Type="String" Name="CoverImage" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="1024" />
+          <NavigationProperty Name="SeqChapters" Relationship="Sequential2013.SeqBookSeqChapter" FromRole="SeqBook" ToRole="SeqChapter" />
+        </EntityType>
+        <Association Name="SeqBookSeqChapter">
+          <End Type="Sequential2013.SeqBook" Role="SeqBook" Multiplicity="1" />
+          <End Type="Sequential2013.SeqChapter" Role="SeqChapter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeqBook">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="SeqChapter">
+              <PropertyRef Name="SeqBookBookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SeqChapterSeqPage">
+          <End Type="Sequential2013.SeqChapter" Role="SeqChapter" Multiplicity="1" />
+          <End Type="Sequential2013.SeqPage" Role="SeqPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeqChapter">
+              <PropertyRef Name="ChapterId" />
+            </Principal>
+            <Dependent Role="SeqPage">
+              <PropertyRef Name="SeqChapterChapterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SeqPost">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Type="Int32" Name="PostId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" />
+          <Property Type="Boolean" Name="Published" Nullable="false" />
+          <Property Type="String" Name="Excerpt" Nullable="true" />
+          <Property Type="String" Name="ExtendedText" Nullable="true" />
+          <Property Type="String" Name="Permalink" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="BlogId" Nullable="true" MaxLength="64" />
+          <NavigationProperty Name="SeqTags" Relationship="Sequential2013.SeqTagSeqPost" FromRole="SeqPost" ToRole="SeqTag" />
+          <Property Type="Int32" Name="SeqCategoryCategoryId" Nullable="false" />
+          <NavigationProperty Name="SeqCategory" Relationship="Sequential2013.SeqCategorySeqPost" FromRole="SeqPost" ToRole="SeqCategory" />
+        </EntityType>
+        <EntityType Name="SeqTag">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Type="Int32" Name="TagId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+          <Property Type="Int32" Name="Tally" Nullable="false" />
+          <Property Type="String" Name="BlogId" Nullable="false" MaxLength="64" />
+          <NavigationProperty Name="SeqPosts" Relationship="Sequential2013.SeqTagSeqPost" FromRole="SeqTag" ToRole="SeqPost" />
+        </EntityType>
+        <EntityType Name="SeqCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Type="Int32" Name="CategoryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="Tally" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
+          <Property Type="String" Name="BlogId" Nullable="false" MaxLength="64" />
+          <NavigationProperty Name="SeqPosts" Relationship="Sequential2013.SeqCategorySeqPost" FromRole="SeqCategory" ToRole="SeqPost" />
+        </EntityType>
+        <Association Name="SeqTagSeqPost">
+          <End Type="Sequential2013.SeqTag" Role="SeqTag" Multiplicity="*" />
+          <End Type="Sequential2013.SeqPost" Role="SeqPost" Multiplicity="*" />
+        </Association>
+        <Association Name="SeqCategorySeqPost">
+          <End Type="Sequential2013.SeqCategory" Role="SeqCategory" Multiplicity="1" />
+          <End Type="Sequential2013.SeqPost" Role="SeqPost" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Sequential2013StoreContainer" CdmEntityContainer="SeqEFContext">
+    <EntitySetMapping Name="SeqPages">
+      <EntityTypeMapping TypeName="IsTypeOf(Sequential2013.SeqPage)">
+        <MappingFragment StoreEntitySet="SeqPages">
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="PageNum" ColumnName="PageNum" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SeqChapterChapterId" ColumnName="SeqChapterChapterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeqChapters">
+      <EntityTypeMapping TypeName="IsTypeOf(Sequential2013.SeqChapter)">
+        <MappingFragment StoreEntitySet="SeqChapters">
+          <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ChapterNum" ColumnName="ChapterNum" />
+          <ScalarProperty Name="SeqBookBookId" ColumnName="SeqBookBookId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeqBooks">
+      <EntityTypeMapping TypeName="IsTypeOf(Sequential2013.SeqBook)">
+        <MappingFragment StoreEntitySet="SeqBooks">
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="PageCount" ColumnName="PageCount" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UriContext" ColumnName="UriContext" />
+          <ScalarProperty Name="Featured" ColumnName="Featured" />
+          <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeqPosts">
+      <EntityTypeMapping TypeName="IsTypeOf(Sequential2013.SeqPost)">
+        <MappingFragment StoreEntitySet="SeqPosts">
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Excerpt" ColumnName="Excerpt" />
+          <ScalarProperty Name="ExtendedText" ColumnName="ExtendedText" />
+          <ScalarProperty Name="Permalink" ColumnName="Permalink" />
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+          <ScalarProperty Name="SeqCategoryCategoryId" ColumnName="SeqCategoryCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeqTags">
+      <EntityTypeMapping TypeName="IsTypeOf(Sequential2013.SeqTag)">
+        <MappingFragment StoreEntitySet="SeqTags">
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="Tally" ColumnName="Tally" />
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeqCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(Sequential2013.SeqCategory)">
+        <MappingFragment StoreEntitySet="SeqCategories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Tally" ColumnName="Tally" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="SeqTagSeqPost" TypeName="Sequential2013.SeqTagSeqPost" StoreEntitySet="SeqTagSeqPost">
+      <EndProperty Name="SeqTag">
+        <ScalarProperty Name="TagId" ColumnName="SeqTags_TagId" />
+      </EndProperty>
+      <EndProperty Name="SeqPost">
+        <ScalarProperty Name="PostId" ColumnName="SeqPosts_PostId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SeqCategorySeqPost" TypeName="Sequential2013.SeqCategorySeqPost" StoreEntitySet="SeqPosts">
+      <EndProperty Name="SeqCategory">
+        <ScalarProperty Name="CategoryId" ColumnName="SeqCategory_CategoryId" />
+      </EndProperty>
+      <EndProperty Name="SeqPost">
+        <ScalarProperty Name="PostId" ColumnName="PostId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Sequential2013" >
+        <EntityTypeShape EntityType="Sequential2013.SeqPage" Width="1.75" PointX="5.25" PointY="1.5" Height="2.172587890625" />
+        <EntityTypeShape EntityType="Sequential2013.SeqChapter" Width="1.5" PointX="3" PointY="1.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sequential2013.SeqBook" Width="1.5" PointX="0.75" PointY="1.375" Height="2.9417936197916665" />
+        <AssociationConnector Association="Sequential2013.SeqBookSeqChapter">
+          <ConnectorPoint PointX="2.25" PointY="2.8362939453125" />
+          <ConnectorPoint PointX="3" PointY="2.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Sequential2013.SeqChapterSeqPage">
+          <ConnectorPoint PointX="4.5" PointY="2.7112939453125" />
+          <ConnectorPoint PointX="5.25" PointY="2.7112939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Sequential2013.SeqPost" Width="1.5" PointX="3" PointY="4.75" Height="3.7109993489583335" />
+        <EntityTypeShape EntityType="Sequential2013.SeqTag" Width="1.5" PointX="5.25" PointY="4.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Sequential2013.SeqCategory" Width="1.5" PointX="0.75" PointY="4.875" Height="2.1725878906249996" />
+        <AssociationConnector Association="Sequential2013.SeqTagSeqPost">
+          <ConnectorPoint PointX="5.25" PointY="5.8362939453125" />
+          <ConnectorPoint PointX="4.5" PointY="5.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Sequential2013.SeqCategorySeqPost">
+          <ConnectorPoint PointX="2.25" PointY="5.9612939453125" />
+          <ConnectorPoint PointX="3" PointY="5.9612939453125" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

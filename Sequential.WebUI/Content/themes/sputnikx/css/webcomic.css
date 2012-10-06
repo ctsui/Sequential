@@ -1,0 +1,185 @@
+﻿/*
+Soviet
+Warm Grey - #CCC6AE
+Tan - #AB7C34
+Salmon - #C75B37
+Rust - #9B2312
+Red - #730D0D
+*/
+#TopBanner 
+{
+   top:0px;
+   height:140px;
+   margin: 0px;
+   padding: 0px;
+}
+#TopBanner h1
+{
+   padding:0px;
+   margin:0px;
+}
+#TopBanner h1 a 
+{
+   display:block;
+   width:800px;
+   height:140px;
+   margin:0px;
+   padding:0px;
+   text-indent:-9999px;
+}
+#About 
+{
+   margin:20px;
+}
+#Blog 
+{
+   float:left;
+   width:775px;
+   margin-left:15px;
+   margin-right:10px;
+}
+#Blog h2 
+{
+   padding: 5px 5px 20px 0px;
+}
+#Blog h3
+{
+   margin: 0px 0px 10px -20px;
+}
+#Blog p
+{
+   padding:0px 5px 15px 0px;
+}
+#Blog hr
+{
+   border-style:none;
+   border-bottom-color:#CCC6AE;
+   border-bottom-style:dashed;
+   height:1px;
+}
+#Blog .readMoreLink 
+{
+   text-align:right;
+   padding:0px 0px 15px 0px;
+}
+#Blog .datetime 
+{
+   text-align:right;
+   font-size:smaller;
+   padding:0px 0px 0px 0px;
+}
+#post 
+{
+   margin:0px;
+   padding:0px;
+}
+#Categories 
+{
+   float:left;
+   padding:20px 5px 20px 0px;
+}
+#Categories h3 
+{
+   padding-bottom:5px;
+}
+#ComicsGallery 
+{
+   width:640px;
+   margin:0 auto;
+   padding:10px 0px 10px 0px;
+}
+#ContentContainer 
+{
+   width:800px;
+   margin:0px auto;
+   padding:0px;  
+}
+#ContentContainer h3
+{
+   padding-left:20px;
+}
+#ContactInfo 
+{
+   float:left;
+   padding:20px 5px 20px 0px;
+   width:180px;
+}
+#ContactInfo h3 
+{
+   padding-left:20px;
+}
+#Links 
+{
+   float:left;
+   padding:20px 5px 20px 0px;
+}
+#postNavControl 
+{
+   text-align:center;
+   margin:0px auto;
+   padding: 10px 0px 15px 0px;
+}
+#SearchTerm h4 
+{
+   color:White;
+   background-color:#161c2b;
+   text-align:center;
+   margin-bottom:10px;
+   padding:0px 0px 0px 0px;
+}
+#Sidebar
+{
+   float:left;
+   width:800px;
+   background-color:#CCC6AE;
+}
+#Sidebar h3
+{
+   padding-top:0px;
+   padding-bottom:5px;
+}
+#Books 
+{
+   padding:0px 0px 0px 15px;
+   font-size:0.9em;
+   font-family: Verdana, Helvetica, Sans-Serif;
+}
+#Books p 
+{
+   padding:7px 0px 20px 12px;
+}
+#StickyNews 
+{
+   float:left;
+   padding:20px 0px 0px 0px;
+   font-size:0.9em;
+   font-family: Verdana, Helvetica, Sans-Serif;
+}
+#StickyNews p 
+{
+   padding:7px 0px 0px 12px;
+}
+#StickyNews h5 
+{
+   font-size:1.2em;
+   padding:10px 0px 0px 5px;
+}
+#StickyNews hr
+{
+   border-style:none;
+   border-bottom-color:#CCC6AE;
+   border-bottom-style:dashed;
+   height:1px;
+}
+#StickyNews .newsDate 
+{
+   padding-top:7px;
+   font-size:smaller;
+   text-align:right;
+}
+.clear 
+{
+   clear:both;
+   margin:0px;
+   padding:0px;
+}
