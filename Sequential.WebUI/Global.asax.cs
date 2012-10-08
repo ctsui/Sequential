@@ -63,7 +63,8 @@ namespace Sequential2013.WebUI
 					action = "RssFeed"
 				});
 
-			routes.MapRoute("ComicsHome", "{comic}/chapter{chapter}/page{page}/{perma}/{id}",
+			routes.MapRoute("WebcomicExplicit", 
+                "{comic}/chapter{chapter}/page{page}/{perma}/{id}",
 				new { 
 					controller = "WebComic", 
 					action = "Comic",
@@ -78,17 +79,25 @@ namespace Sequential2013.WebUI
 					id = @"\d*" 
 				});
 
-			routes.MapRoute("EdenHome", "eden/",
-				new {
-					controller = "WebComic",
-					action = "MostRecentAll"
-				});
-			
-			routes.MapRoute(
-				 "Default", // Route name
-				 "{controller}/{action}/{id}", // URL with parameters
-				 new { controller = "Post", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-			);
+            routes.MapRoute("TurnPage", "turnpage/{comic}/chapter{chapter}/page{page}",
+                new
+                {
+                    controller = "WebComic",
+                    action = "TurnPage"
+                });
+
+            routes.MapRoute("WebcomicHome", "{comic}",
+                new
+                {
+                    controller = "WebComic",
+                    action = "MostRecentAll"
+                });
+
+            routes.MapRoute(
+                 "Default", // Route name
+                 "{controller}/{action}/{id}", // URL with parameters
+                 new { controller = "Post", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
 			
 		}
 
