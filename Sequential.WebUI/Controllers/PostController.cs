@@ -72,22 +72,22 @@ public class PostController : Controller {
       return Content(rss.ToString(), "application/rss+xml");
    }
 
-   public ActionResult PostPage(string bid=null, int pageNum=1) 
-	{
-		//if (pageNum < 1) pageNum = 1;
-		if (bid == null) bid = blogId;
-      BlogHomeVModel bhvm = new BlogHomeVModel();
-		IQueryable<SeqPost> results = postsRep.GetPostPage(pageSize,pageNum,bid);
-		bhvm.RecentPosts = VModelFactory.BlogPosts(results);
-		bhvm.AllCategories = VModelFactory.AllCategories(catRep.AllCategories(bid));
-		//bhvm.News = VModelFactory.BlogPosts(catRep.RecentNews(5));
-		//bhvm.Books = VModelFactory.Books(bookRep.AllBooks());
-		bhvm.CurrentPage = pageNum;
-		bhvm.PageSize = pageSize;
-		bhvm.HasMorePages = bhvm.RecentPosts.Count() > 0;
-		bhvm.Controller = "post";
-		bhvm.Action = "PostPage";
-      return View("Index",bhvm);
+   public ActionResult PostPage(string bid=null, int pageNum=1)
+   {
+       //if (pageNum < 1) pageNum = 1;
+       if (bid == null) bid = blogId;
+       BlogHomeVModel bhvm = new BlogHomeVModel();
+       IQueryable<SeqPost> results = postsRep.GetPostPage(pageSize,pageNum,bid);
+       bhvm.RecentPosts = VModelFactory.BlogPosts(results);
+       bhvm.AllCategories = VModelFactory.AllCategories(catRep.AllCategories(bid));
+       //bhvm.News = VModelFactory.BlogPosts(catRep.RecentNews(5));
+       //bhvm.Books = VModelFactory.Books(bookRep.AllBooks());
+       bhvm.CurrentPage = pageNum;
+       bhvm.PageSize = pageSize;
+       bhvm.HasMorePages = bhvm.RecentPosts.Count() > 0;
+       bhvm.Controller = "post";
+       bhvm.Action = "PostPage";
+       return View("Index",bhvm);
    }
 
 	[ValidateInput(false)]
