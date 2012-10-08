@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/16/2012 11:03:27
--- Generated from EDMX file: C:\Users\Carl\Documents\Sequential 2013\Sequential2013.Domain\Sequential2013.edmx
+-- Date Created: 10/07/2012 15:53:12
+-- Generated from EDMX file: C:\code\Sequential\Sequential.Domain\Sequential2013.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -31,6 +31,9 @@ IF OBJECT_ID(N'[dbo].[FK_SeqTagSeqPost_SeqPost]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_SeqCategorySeqPost]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SeqPosts] DROP CONSTRAINT [FK_SeqCategorySeqPost];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SeqPageSeqTag]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SeqTags] DROP CONSTRAINT [FK_SeqPageSeqTag];
 GO
 
 -- --------------------------------------------------
@@ -140,6 +143,13 @@ CREATE TABLE [dbo].[SeqTagSeqPost] (
 );
 GO
 
+-- Creating table 'SeqPageSeqTag'
+CREATE TABLE [dbo].[SeqPageSeqTag] (
+    [SeqPage_PageId] int  NOT NULL,
+    [SeqTags_TagId] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -184,6 +194,12 @@ GO
 ALTER TABLE [dbo].[SeqTagSeqPost]
 ADD CONSTRAINT [PK_SeqTagSeqPost]
     PRIMARY KEY NONCLUSTERED ([SeqTags_TagId], [SeqPosts_PostId] ASC);
+GO
+
+-- Creating primary key on [SeqPage_PageId], [SeqTags_TagId] in table 'SeqPageSeqTag'
+ALTER TABLE [dbo].[SeqPageSeqTag]
+ADD CONSTRAINT [PK_SeqPageSeqTag]
+    PRIMARY KEY NONCLUSTERED ([SeqPage_PageId], [SeqTags_TagId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -253,6 +269,29 @@ ADD CONSTRAINT [FK_SeqCategorySeqPost]
 CREATE INDEX [IX_FK_SeqCategorySeqPost]
 ON [dbo].[SeqPosts]
     ([SeqCategory_CategoryId]);
+GO
+
+-- Creating foreign key on [SeqPage_PageId] in table 'SeqPageSeqTag'
+ALTER TABLE [dbo].[SeqPageSeqTag]
+ADD CONSTRAINT [FK_SeqPageSeqTag_SeqPage]
+    FOREIGN KEY ([SeqPage_PageId])
+    REFERENCES [dbo].[SeqPages]
+        ([PageId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [SeqTags_TagId] in table 'SeqPageSeqTag'
+ALTER TABLE [dbo].[SeqPageSeqTag]
+ADD CONSTRAINT [FK_SeqPageSeqTag_SeqTag]
+    FOREIGN KEY ([SeqTags_TagId])
+    REFERENCES [dbo].[SeqTags]
+        ([TagId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SeqPageSeqTag_SeqTag'
+CREATE INDEX [IX_FK_SeqPageSeqTag_SeqTag]
+ON [dbo].[SeqPageSeqTag]
+    ([SeqTags_TagId]);
 GO
 
 -- --------------------------------------------------

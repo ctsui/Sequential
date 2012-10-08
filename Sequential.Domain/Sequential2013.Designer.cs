@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -22,6 +23,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Sequential2013", "SeqChapterSeqPage", "SeqChapter", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Sequential2013.Domain.SeqChapter), "SeqPage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sequential2013.Domain.SeqPage), true)]
 [assembly: EdmRelationshipAttribute("Sequential2013", "SeqTagSeqPost", "SeqTag", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sequential2013.Domain.SeqTag), "SeqPost", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sequential2013.Domain.SeqPost))]
 [assembly: EdmRelationshipAttribute("Sequential2013", "SeqCategorySeqPost", "SeqCategory", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Sequential2013.Domain.SeqCategory), "SeqPost", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sequential2013.Domain.SeqPost))]
+[assembly: EdmRelationshipAttribute("Sequential2013", "SeqPageSeqTag", "SeqPage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sequential2013.Domain.SeqPage), "SeqTag", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sequential2013.Domain.SeqTag))]
 
 #endregion
 
@@ -170,6 +172,7 @@ namespace Sequential2013.Domain
         private ObjectSet<SeqCategory> _SeqCategories;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -221,11 +224,11 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -262,6 +265,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -484,6 +488,7 @@ namespace Sequential2013.Domain
         partial void OnDescriptionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -510,6 +515,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -542,6 +548,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -668,6 +675,7 @@ namespace Sequential2013.Domain
         partial void OnBlogIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -694,6 +702,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -722,6 +731,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -824,6 +834,7 @@ namespace Sequential2013.Domain
         partial void OnSeqBookBookIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -888,6 +899,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -916,6 +928,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1042,6 +1055,7 @@ namespace Sequential2013.Domain
         partial void OnSeqChapterChapterIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1082,8 +1096,31 @@ namespace Sequential2013.Domain
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Sequential2013", "SeqPageSeqTag", "SeqTag")]
+        public EntityCollection<SeqTag> SeqTags
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SeqTag>("Sequential2013.SeqPageSeqTag", "SeqTag");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SeqTag>("Sequential2013.SeqPageSeqTag", "SeqTag", value);
+                }
+            }
+        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1116,6 +1153,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1386,6 +1424,7 @@ namespace Sequential2013.Domain
         partial void OnSeqCategoryCategoryIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1450,6 +1489,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1482,6 +1522,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1608,6 +1649,7 @@ namespace Sequential2013.Domain
         partial void OnBlogIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1632,10 +1674,34 @@ namespace Sequential2013.Domain
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Sequential2013", "SeqPageSeqTag", "SeqPage")]
+        public EntityCollection<SeqPage> SeqPage
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SeqPage>("Sequential2013.SeqPageSeqTag", "SeqPage");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SeqPage>("Sequential2013.SeqPageSeqTag", "SeqPage", value);
+                }
+            }
+        }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

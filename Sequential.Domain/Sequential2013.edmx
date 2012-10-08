@@ -13,6 +13,7 @@
     <EntitySet Name="SeqTags" EntityType="Sequential2013.Store.SeqTags" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SeqCategories" EntityType="Sequential2013.Store.SeqCategories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SeqTagSeqPost" EntityType="Sequential2013.Store.SeqTagSeqPost" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SeqPageSeqTag" EntityType="Sequential2013.Store.SeqPageSeqTag" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="SeqBookSeqChapter" Association="Sequential2013.Store.SeqBookSeqChapter">
       <End Role="SeqBook" EntitySet="SeqBooks" />
       <End Role="SeqChapter" EntitySet="SeqChapters" />
@@ -32,6 +33,14 @@
     <AssociationSet Name="SeqCategorySeqPost" Association="Sequential2013.Store.SeqCategorySeqPost">
       <End Role="SeqCategory" EntitySet="SeqCategories" />
       <End Role="SeqPost" EntitySet="SeqPosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeqPageSeqTag_SeqPage" Association="Sequential2013.Store.FK_SeqPageSeqTag_SeqPage">
+      <End Role="SeqPage" EntitySet="SeqPages" />
+      <End Role="SeqPageSeqTag" EntitySet="SeqPageSeqTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeqPageSeqTag_SeqTag" Association="Sequential2013.Store.FK_SeqPageSeqTag_SeqTag">
+      <End Role="SeqTag" EntitySet="SeqTags" />
+      <End Role="SeqPageSeqTag" EntitySet="SeqPageSeqTag" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="SeqPages">
@@ -112,6 +121,14 @@
     <Property Name="SeqTags_TagId" Type="int" Nullable="false" />
     <Property Name="SeqPosts_PostId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="SeqPageSeqTag">
+    <Key>
+      <PropertyRef Name="SeqPage_PageId" />
+      <PropertyRef Name="SeqTags_TagId" />
+    </Key>
+    <Property Name="SeqPage_PageId" Type="int" Nullable="false" />
+    <Property Name="SeqTags_TagId" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="SeqBookSeqChapter">
     <End Role="SeqBook" Type="Sequential2013.Store.SeqBooks" Multiplicity="1" />
     <End Role="SeqChapter" Type="Sequential2013.Store.SeqChapters" Multiplicity="*" />
@@ -172,6 +189,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SeqPageSeqTag_SeqPage">
+    <End Role="SeqPage" Type="Sequential2013.Store.SeqPages" Multiplicity="1" />
+    <End Role="SeqPageSeqTag" Type="Sequential2013.Store.SeqPageSeqTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeqPage">
+        <PropertyRef Name="PageId" />
+      </Principal>
+      <Dependent Role="SeqPageSeqTag">
+        <PropertyRef Name="SeqPage_PageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SeqPageSeqTag_SeqTag">
+    <End Role="SeqPageSeqTag" Type="Sequential2013.Store.SeqPageSeqTag" Multiplicity="*" />
+    <End Role="SeqTag" Type="Sequential2013.Store.SeqTags" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SeqTag">
+        <PropertyRef Name="TagId" />
+      </Principal>
+      <Dependent Role="SeqPageSeqTag">
+        <PropertyRef Name="SeqTags_TagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -199,6 +240,10 @@
             <End Role="SeqCategory" EntitySet="SeqCategories" />
             <End Role="SeqPost" EntitySet="SeqPosts" />
           </AssociationSet>
+          <AssociationSet Name="SeqPageSeqTag" Association="Sequential2013.SeqPageSeqTag">
+            <End Role="SeqPage" EntitySet="SeqPages" />
+            <End Role="SeqTag" EntitySet="SeqTags" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="SeqPage">
           <Key>
@@ -210,6 +255,7 @@
           <Property Type="String" Name="Title" Nullable="true" />
           <NavigationProperty Name="SeqChapter" Relationship="Sequential2013.SeqChapterSeqPage" FromRole="SeqPage" ToRole="SeqChapter" />
           <Property Type="Int32" Name="SeqChapterChapterId" Nullable="false" />
+          <NavigationProperty Name="SeqTags" Relationship="Sequential2013.SeqPageSeqTag" FromRole="SeqPage" ToRole="SeqTag" />
         </EntityType>
         <EntityType Name="SeqChapter">
           <Key>
@@ -289,6 +335,7 @@
           <Property Type="Int32" Name="Tally" Nullable="false" />
           <Property Type="String" Name="BlogId" Nullable="false" MaxLength="64" />
           <NavigationProperty Name="SeqPosts" Relationship="Sequential2013.SeqTagSeqPost" FromRole="SeqTag" ToRole="SeqPost" />
+          <NavigationProperty Name="SeqPage" Relationship="Sequential2013.SeqPageSeqTag" FromRole="SeqTag" ToRole="SeqPage" />
         </EntityType>
         <EntityType Name="SeqCategory">
           <Key>
@@ -308,6 +355,10 @@
         <Association Name="SeqCategorySeqPost">
           <End Type="Sequential2013.SeqCategory" Role="SeqCategory" Multiplicity="1" />
           <End Type="Sequential2013.SeqPost" Role="SeqPost" Multiplicity="*" />
+        </Association>
+        <Association Name="SeqPageSeqTag">
+          <End Type="Sequential2013.SeqPage" Role="SeqPage" Multiplicity="*" />
+          <End Type="Sequential2013.SeqTag" Role="SeqTag" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -406,6 +457,14 @@
         <ScalarProperty Name="PostId" ColumnName="PostId" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="SeqPageSeqTag" TypeName="Sequential2013.SeqPageSeqTag" StoreEntitySet="SeqPageSeqTag">
+      <EndProperty Name="SeqPage">
+        <ScalarProperty Name="PageId" ColumnName="SeqPage_PageId" />
+      </EndProperty>
+      <EndProperty Name="SeqTag">
+        <ScalarProperty Name="TagId" ColumnName="SeqTags_TagId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -448,6 +507,7 @@
           <ConnectorPoint PointX="2.25" PointY="5.9612939453125" />
           <ConnectorPoint PointX="3" PointY="5.9612939453125" />
         </AssociationConnector>
+        <AssociationConnector Association="Sequential2013.SeqPageSeqTag" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
