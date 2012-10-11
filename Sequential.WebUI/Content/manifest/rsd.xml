@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <rsd version="1.0" >
    <service>
-      <engineName>Sequential 2011</engineName>
+      <engineName>Sequential 2013</engineName>
       
       <engineLink>http://localhost/sequential/xmlrpc</engineLink>
       <homePageLink>http://localhost/sequential/eden</homePageLink>
@@ -11,7 +11,7 @@
       -->
       <apis>
          <!--<api name="MetaWeblog" preferred="true" apiLink="http://sputnikx.com/xmlrpc" blogID="SputnikxCom" />-->
-         <api name="MetaWeblog" preferred="true" apiLink="http://localhost/sequential/xmlrpc" blogID="EEBlog" />
+         <api name="MetaWeblog" preferred="true" apiLink="http://localhost/sequential/xmlrpc" blogID="eden" />
       </apis>
    </service>
 </rsd>
