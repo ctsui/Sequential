@@ -1,0 +1,44 @@
+﻿@model PagedVModel
+<div id="blogNavControl">
+@if (Model.CurrentPage > 1) {
+   @Ajax.ActionLink("Newer Posts", "AjaxPostPage", "Post",
+                     new {
+                        bid = Model.BlogId,
+                        pageNum = Html.Encode(Model.CurrentPage - 1)
+                     },
+                     new AjaxOptions
+                     {
+                        UpdateTargetId = "blogContent",
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET"
+                     })
+   <text>|</text>
+}
+
+@Ajax.ActionLink("Most Recent","AjaxPostPage","Post",
+                  new {
+                     bid = Model.BlogId,
+                     pageNum = 1
+                  },
+                  new AjaxOptions
+                  {
+                     UpdateTargetId = "blogContent",
+                     InsertionMode = InsertionMode.Replace,
+                     HttpMethod = "GET"
+                  })
+
+@if (Model.HasMorePages) {
+   <text>|</text>
+   @Ajax.ActionLink("Older Posts", "AjaxPostPage", "Post",
+                     new {
+                        bid = Model.BlogId,
+                        pageNum = Html.Encode(Model.CurrentPage + 1)
+                     },
+                     new AjaxOptions
+                     {
+                        UpdateTargetId = "blogContent",
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET"
+                     })
+}
+</div>
