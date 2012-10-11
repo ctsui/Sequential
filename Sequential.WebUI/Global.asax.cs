@@ -32,6 +32,12 @@ namespace Sequential2013.WebUI
 			         action = "PostPage"
 			   });
 
+			routes.MapRoute("AjaxPostNav", "{bid}/posts/apage/{pageNum}",
+				new {
+					controller = "Post",
+					action = "AjaxPostPage"
+				});
+
 			/* localhost/sequential/post/{id}/{title} - note that the title is
             simply a human recognizable condensation of the actual post title
             but everything will really be looked up by id. */
@@ -67,7 +73,7 @@ namespace Sequential2013.WebUI
                 "{comic}/chapter{chapter}/page{page}/{perma}/{id}",
 				new { 
 					controller = "WebComic", 
-					action = "Comic",
+					action = "FullPathEntry",
 					perma=UrlParameter.Optional,
 					id=UrlParameter.Optional
 				},
