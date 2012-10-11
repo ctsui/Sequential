@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\WebComicController.cs">
       <SubType>Code</SubType>
@@ -117,15 +118,13 @@
     <Content Include="Content\comics\Inbound4.jpg" />
     <Content Include="Content\comics\LeftOvers1.jpg" />
     <Content Include="Content\manifest\images\StoryAndArtBannerFlat.png" />
-    <Content Include="Content\themes\eden\css\africanSafari.css" />
-    <Content Include="Content\themes\eden\css\steampunk2.css" />
+    <Content Include="Content\themes\eden\css\layout.css" />
     <Content Include="Content\themes\eden\css\normalize.css" />
     <Content Include="Content\themes\eden\images\EdenExpedition60.png" />
     <Content Include="Content\themes\eden\images\oldMapOverlay.png" />
     <Content Include="Content\themes\eden\images\OldParchment.jpg" />
     <Content Include="Content\themes\sputnikx\css\Failures.css" />
     <Content Include="Content\manifest\images\Borders.png" />
-    <Content Include="Content\themes\eden\css\SinglePageComic.css" />
     <Content Include="Content\themes\sputnikx\css\normalize.css" />
     <Content Include="Content\themes\sputnikx\css\Site.css" />
     <Content Include="Content\themes\sputnikx\css\webcomic.css" />
@@ -145,23 +144,26 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Views\WebComic\ComicNotFound.aspx" />
-    <Content Include="Views\WebComic\StandardComic.aspx" />
     <Content Include="Views\Category\PostsForCategory.aspx" />
-    <Content Include="Views\WebComic\VerticalComic.aspx" />
     <Content Include="Content\themes\sputnikx\errorpages\Fail.aspx" />
     <Content Include="Views\Shared\DisplayTemplates\Categories.ascx" />
     <Content Include="Views\Post\GetSinglePost.aspx" />
     <Content Include="Views\Shared\BlogPostControl.ascx" />
-    <Content Include="Views\Shared\BookControl.ascx" />
     <Content Include="Views\Shared\CategoryControl.ascx" />
     <Content Include="Views\Shared\LinksControl.ascx" />
     <Content Include="Views\Shared\PostNavControl.ascx" />
-    <Content Include="Views\Shared\SinglePageNavControlPageNum.ascx" />
-    <Content Include="Views\Shared\SinglePageNavControl.ascx" />
-    <Content Include="Views\Shared\StickyNewsControl.ascx" />
     <Content Include="Views\Shared\TagsControl.ascx" />
-    <Content Include="Views\Shared\VerticalPageNavControl.ascx" />
     <Content Include="Views\Tag\PostsForTag.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -172,18 +174,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Post\Comics.aspx" />
     <Content Include="Views\Post\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
@@ -224,10 +217,19 @@
     <Content Include="Views\Shared\EdenLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\WebComic\ComicImages.cshtml" />
+    <Content Include="Views\Shared\BlogPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\BlogPost.cshtml" />
+    <Content Include="Views\WebComic\TurnPage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\BlogCategories.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\BlogPostNav.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Post\AjaxPostPage.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
