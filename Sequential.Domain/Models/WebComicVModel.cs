@@ -15,10 +15,23 @@ public class WebComicVModel : BlogHomeVModel {
         AllCategories = new List<CategoryVModel>();
     }
 
+	/// <summary>
+	/// Create a new <code>WebComicVModel</code> that clones the properties of
+	/// its superclass.
+	/// </summary>
+	/// <param name="bhvm">The parent <code>BlogHomeVModel</code>to clone.
+	/// </param>
 	public WebComicVModel(BlogHomeVModel bhvm) 
 	{
 		this.RecentPosts = bhvm.RecentPosts;
 		this.AllCategories = bhvm.AllCategories;
+		this.Action = bhvm.Action;
+		this.Controller = bhvm.Controller;
+		this.CurrentPage = bhvm.CurrentPage;
+		this.HasMorePages = bhvm.HasMorePages;
+		this.PageSize = bhvm.PageSize;
+		this.BlogId = bhvm.BlogId;
+		bhvm = null;
 	}
 
 	public int PageNumber { get; set; }
@@ -46,9 +59,10 @@ public class WebComicVModel : BlogHomeVModel {
         else return 0;
     }
 
-    //TODO: Get rid of hardcoded Eden.
 	public string FileName()
-	{ return BookName+"C" + ChapterNumber + "P" + PageNumber; }
+	{ 
+		return BookName+"C" + ChapterNumber + "P" + PageNumber; 
+	}
 
 }
 } //end namespace
