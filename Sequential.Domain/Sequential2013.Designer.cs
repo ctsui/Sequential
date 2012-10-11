@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -172,7 +171,6 @@ namespace Sequential2013.Domain
         private ObjectSet<SeqCategory> _SeqCategories;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -224,11 +222,11 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -265,7 +263,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -488,7 +485,6 @@ namespace Sequential2013.Domain
         partial void OnDescriptionChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -515,7 +511,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -548,7 +543,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -675,7 +669,6 @@ namespace Sequential2013.Domain
         partial void OnBlogIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -702,7 +695,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -731,7 +723,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -834,7 +825,6 @@ namespace Sequential2013.Domain
         partial void OnSeqBookBookIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -899,7 +889,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -928,7 +917,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1055,7 +1043,6 @@ namespace Sequential2013.Domain
         partial void OnSeqChapterChapterIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1120,7 +1107,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1140,20 +1126,17 @@ namespace Sequential2013.Domain
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="createDate">Initial value of the CreateDate property.</param>
         /// <param name="published">Initial value of the Published property.</param>
-        /// <param name="seqCategoryCategoryId">Initial value of the SeqCategoryCategoryId property.</param>
-        public static SeqPost CreateSeqPost(global::System.Int32 postId, global::System.String title, global::System.DateTime createDate, global::System.Boolean published, global::System.Int32 seqCategoryCategoryId)
+        public static SeqPost CreateSeqPost(global::System.Int32 postId, global::System.String title, global::System.DateTime createDate, global::System.Boolean published)
         {
             SeqPost seqPost = new SeqPost();
             seqPost.PostId = postId;
             seqPost.Title = title;
             seqPost.CreateDate = createDate;
             seqPost.Published = published;
-            seqPost.SeqCategoryCategoryId = seqCategoryCategoryId;
             return seqPost;
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1398,33 +1381,8 @@ namespace Sequential2013.Domain
         private global::System.String _BlogId;
         partial void OnBlogIdChanging(global::System.String value);
         partial void OnBlogIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 SeqCategoryCategoryId
-        {
-            get
-            {
-                return _SeqCategoryCategoryId;
-            }
-            set
-            {
-                OnSeqCategoryCategoryIdChanging(value);
-                ReportPropertyChanging("SeqCategoryCategoryId");
-                _SeqCategoryCategoryId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SeqCategoryCategoryId");
-                OnSeqCategoryCategoryIdChanged();
-            }
-        }
-        private global::System.Int32 _SeqCategoryCategoryId;
-        partial void OnSeqCategoryCategoryIdChanging(global::System.Int32 value);
-        partial void OnSeqCategoryCategoryIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1489,7 +1447,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1522,7 +1479,6 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1649,7 +1605,6 @@ namespace Sequential2013.Domain
         partial void OnBlogIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1698,10 +1653,8 @@ namespace Sequential2013.Domain
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }

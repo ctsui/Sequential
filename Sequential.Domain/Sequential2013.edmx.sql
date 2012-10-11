@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/07/2012 15:53:12
--- Generated from EDMX file: C:\code\Sequential\Sequential.Domain\Sequential2013.edmx
+-- Date Created: 10/08/2012 21:44:29
+-- Generated from EDMX file: C:\Users\Carl\Documents\GitHub\Sequential\Sequential.Domain\Sequential2013.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -32,8 +32,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_SeqCategorySeqPost]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SeqPosts] DROP CONSTRAINT [FK_SeqCategorySeqPost];
 GO
-IF OBJECT_ID(N'[dbo].[FK_SeqPageSeqTag]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SeqTags] DROP CONSTRAINT [FK_SeqPageSeqTag];
+IF OBJECT_ID(N'[dbo].[FK_SeqPageSeqTag_SeqPage]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SeqPageSeqTag] DROP CONSTRAINT [FK_SeqPageSeqTag_SeqPage];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SeqPageSeqTag_SeqTag]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SeqPageSeqTag] DROP CONSTRAINT [FK_SeqPageSeqTag_SeqTag];
 GO
 
 -- --------------------------------------------------
@@ -60,6 +63,9 @@ IF OBJECT_ID(N'[dbo].[SeqCategories]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[SeqTagSeqPost]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SeqTagSeqPost];
+GO
+IF OBJECT_ID(N'[dbo].[SeqPageSeqTag]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SeqPageSeqTag];
 GO
 
 -- --------------------------------------------------
@@ -111,7 +117,6 @@ CREATE TABLE [dbo].[SeqPosts] (
     [ExtendedText] nvarchar(max)  NULL,
     [Permalink] nvarchar(256)  NULL,
     [BlogId] nvarchar(64)  NULL,
-    [SeqCategoryCategoryId] int  NOT NULL,
     [SeqCategory_CategoryId] int  NOT NULL
 );
 GO
