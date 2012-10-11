@@ -1,25 +1,28 @@
 ﻿@model WebComicVModel
 @{
-    Layout = "~/Views/Shared/EdenLayout.cshtml";
+   Layout = "~/Views/Shared/EdenLayout.cshtml";
 }
 <div id="main">
-    @Html.Partial("TurnPage") 
+   @Html.Partial("TurnPage")
 </div>
-<div id="blogContainer">         
-    <div id="categories">
-    <h1>Story So Far</h1>
-    <p>Stranded stewardess Holly Richey thought she got lucky in getting on a
-    transient transport flight for an early return trip to London. Unfortunately, things
-    seem to have taken a turn for the worse...</p>
-    <br />
-    <h3>Categories</h3>
-    <ul>
-        <li>Cool site 1</li>
-        <li>Awesome site 2</li>
-        <li>Even nicer site 3</li>
-    </ul>
-    </div>
-    <div id="blogContent">
-    @Html.Partial("BlogPost",Model.RecentPosts)            
-    </div>
+<div id="blogContainer">
+   <div id="twoColumns">
+      <div id="blurb">
+         <h3>About</h3>
+         <p>Lost in the wilderness of Africa, errant stewardess Holly Richey uncovers 
+         a secret Nazi expedition underway to secure a rich source of heavy water. Yet
+         something vastly stranger - and more dangerous - than even the threat of Nazi 
+         atomic weapons lies waiting to be discovered!
+         </p>  
+      </div>
+      <div id="blogContent">
+         @Html.Partial("BlogPost", Model.RecentPosts)
+         @Html.Partial("BlogPostNav", Model)
+      </div>
+      <div style="clear:both;"</div>
+      <div id="rightAside"> 
+         @Html.Partial("BlogCategories",Model.AllCategories)
+      </div>
+   </div>
+      
 </div>

@@ -6,47 +6,47 @@
       prev = 1;
    }
    string PrevPage = Convert.ToString(prev);
-   string ImagePath = "~/content/comics/Eden/"+@Model.FileName()+".jpg";
+   string ImagePath = "~/content/comics/Eden/" + @Model.FileName() + ".jpg";
 }
-        <div id="comic">
-            <div id="slot1" class="slot"><img width="800" height="480" src="@Url.Content(@ImagePath)"/></div>
-        </div>     
-        <nav id="pageNav">
-            @*@for (int i=1; i<23; i++)
-            {
-            @Html.ActionLink(Convert.ToString(i),"Comic",
-            new {
-                comic="eden",
-                chapter = @Model.ChapterNumber,
-                page = Convert.ToString(i),
-                perma = @Model.GetFeaturedPost(),
-                id = @Model.GetFeaturedPostId()
-            })
-            <span>&nbsp;</span>
-            }*@   
-            @Ajax.ActionLink("Prev","TurnPage",
+<div id="comic">
+   <div id="slot1" class="slot">
+      <img width="800" height="480" src="@Url.Content(@ImagePath)"/>
+   </div>
+</div>
+<nav id="pageNav">
+            Cover | 
+            @Ajax.ActionLink("Prev", "TurnPage",
                 new {
-                    comic="eden",
-                    chapter = @Model.ChapterNumber,
-                    page = @PrevPage
+                   comic = "eden",
+                   chapter = @Model.ChapterNumber,
+                   page = @PrevPage
                 },
-                new AjaxOptions{
-                    UpdateTargetId="main",
-                    InsertionMode=InsertionMode.Replace,
-                    HttpMethod="GET",
-                    
-                })
+                new AjaxOptions
+                {
+                   UpdateTargetId = "main",
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET",
 
-            @Ajax.ActionLink("Next","TurnPage",
-                new {
-                    comic="eden",
-                    chapter = @Model.ChapterNumber,
-                    page = @NextPage
                 },
-                new AjaxOptions{
-                    UpdateTargetId="main",
-                    InsertionMode=InsertionMode.Replace,
-                    HttpMethod="GET"
+                new {
+                   id = "prevPage"
                 })
+            |
             <span>@Model.PageNumber of 23</span>
+            |
+            @Ajax.ActionLink("Next", "TurnPage",
+                new {
+                   comic = "eden",
+                   chapter = @Model.ChapterNumber,
+                   page = @NextPage
+                },
+                new AjaxOptions
+                {
+                   UpdateTargetId = "main",
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET"
+                },
+                new {
+                   id = "nextPage"
+                })
         </nav>
