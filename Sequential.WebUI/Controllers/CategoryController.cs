@@ -18,7 +18,7 @@ public class CategoryController : Controller {
 	private int pageSize;
 	private string blogId;
 
-   public CategoryController(ISeqPostsRepository pRep, 
+   public CategoryController(	ISeqPostsRepository pRep, 
 										ISeqCategoriesRepository cRep,
 										ISeqTagsRepository tRep) {
       postsRep = pRep;
@@ -33,37 +33,44 @@ public class CategoryController : Controller {
 	public ActionResult PostsForCategory(string category, string order,
 														int pageNum = 1)
 	{
-		IQueryable<SeqPost> catPosts =
-			postsRep.PostsForCategory(blogId, category, order, pageSize, pageNum);
+		return View("PostsForCategory", 
+						GetPostsForCategory(null,category,order,pageNum));
+	}
+
+	/// <summary>
+	/// Get the posts for a specific category and return as a partial view.
+	/// </summary>
+	/// <param name="bid">The blog id.</param>
+	/// <param name="category">The category associated with the posts.</param>
+	/// <param name="order">desc or asc</param>
+	/// <param name="pageNum">The server-side page in multi-page result.</param>
+	/// <returns>Partial view for insertion into a div.</returns>
+	public ActionResult AjaxPostsForCategory(	string bid, string category,
+															string order, int pageNum = 1)
+	{
+		return PartialView(	"AjaxPostsForCategory",
+									GetPostsForCategory(bid, category, order, pageNum));
+	}
+
+	private PostsForCategoryVModel GetPostsForCategory(string bid, string category,
+		string order, int pageNum=1)
+	{
+		if (bid == null) bid = blogId;
+		IQueryable<SeqPost> catPosts = postsRep.PostsForCategory(
+												 bid, category, order, pageSize, pageNum);
 
 		PostsForCategoryVModel pcvm = new PostsForCategoryVModel(category);
+		pcvm.BlogId = bid;
 		pcvm.AllPosts = VModelFactory.BlogPosts(catPosts);
-		pcvm.Controller = "category";
-		pcvm.Action = "PostsForCategory";
 		pcvm.CurrentPage = pageNum;
 		pcvm.PageSize = pageSize;
 		pcvm.HasMorePages = pcvm.AllPosts.Count() > 0;
 		pcvm.AllCategories = VModelFactory.AllCategories(
-										catRep.AllCategories(blogId), blogId);
+									catRep.AllCategories(bid),bid);
 		//pcvm.News = VModelFactory.BlogPosts(catRep.RecentNews(5));
 		//pcvm.Books = VModelFactory.Books(bookRep.AllBooks());
-		return View("PostsForCategory", pcvm);
+		return pcvm;
 	}
-
-	public ActionResult AjaxPostsForCategory(	string bid, string category, 
-															string order, int pageNum=1)
-	{
-		IQueryable<SeqPost> catPosts = postsRep.PostsForCategory(bid, category,
-			order, pageSize, pageNum);
-		PostsForCategoryVModel pcvm = new PostsForCategoryVModel(category);
-		pcvm.AllPosts = VModelFactory.BlogPosts(catPosts);
-		pcvm.CurrentPage = pageNum;
-		pcvm.PageSize = pageSize;
-		pcvm.HasMorePages = pcvm.AllPosts.Count() > 0;
-		pcvm.AllCategories = VModelFactory.AllCategories(
-										catRep.AllCategories(bid),bid);
-		pcvm.BlogId = bid;
-		return View("AjaxPostsForCategory", pcvm);
-	}
-}
-}
+	
+} //end class
+} //end namespace

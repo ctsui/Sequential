@@ -1,11 +1,8 @@
-﻿using System.Data.Linq;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sequential2013.Domain.Abstract;
 using Sequential2013.Domain.Models;
-using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Sequential2013.Domain.Utilities;
 
 namespace Sequential2013.Domain.Concrete {
@@ -239,7 +236,8 @@ public class SeqPostsRepository : ISeqPostsRepository {
 		SeqCategory oldCategory = sp.SeqCategory;
 		SeqCategory theCategory = GetUncategorizedCategory();
 		if (catName.Length > 0) {
-		   theCategory = db.SeqCategories.SingleOrDefault(d => d.Name == catName);
+		   theCategory = db.SeqCategories.SingleOrDefault(
+									d => d.Name == catName && d.BlogId==sp.BlogId);
 		   /* New category was submitted with post */
 		   if (theCategory == null) {
 		      theCategory = new SeqCategory();
