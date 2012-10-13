@@ -36,12 +36,13 @@ namespace Sequential2013.Domain.Models {
 		}
 
 		public static List<CategoryVModel> AllCategories(
-			IQueryable<SeqCategory> result) {
+			IQueryable<SeqCategory> result, string blogId) {
 
 			List<CategoryVModel> categoryList = new List<CategoryVModel>();
 			CategoryVModel cat;
 			foreach (SeqCategory sc in result) {
-				cat = new CategoryVModel(sc.CategoryId, sc.Name, (int)sc.Tally);
+				cat = new CategoryVModel(	blogId, sc.CategoryId, sc.Name,
+													(int)sc.Tally);
 				categoryList.Add(cat);
 			}
 			return categoryList;

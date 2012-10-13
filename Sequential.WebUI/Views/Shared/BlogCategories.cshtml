@@ -4,8 +4,20 @@
 @if (Model.Count() > 0) {
    <ul>
    @foreach (CategoryVModel cat in Model) {
-      <li>@Html.ActionLink(cat.ToString(), "PostsForCategory", "category",
-               new { category = Html.Encode(cat.Name), pageNum = 1 }, null)</li>
+      <li>@Ajax.ActionLink(cat.ToString(),"AjaxPostsForCategory","Category",
+                  new {
+                     bid = cat.BlogId,
+                     category = cat.Name,
+                     order="desc",
+                     pageNum = 1
+                  },
+                  new AjaxOptions
+                  {
+                     UpdateTargetId = "blogContent",
+                     InsertionMode = InsertionMode.Replace,
+                     HttpMethod = "GET"
+                  })
+      </li>
    }
    </ul>
 } else {

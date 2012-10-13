@@ -1,0 +1,6 @@
+﻿@model PostsForCategoryVModel
+   <div id="SearchTerm">
+      <h4>Articles categorized &quot;@Model.Category&quot;</h4>
+   </div>
+   @Html.Partial("BlogPost", Model.AllPosts)
+   @Html.Partial("BlogPostNav", Model)

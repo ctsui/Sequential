@@ -138,18 +138,23 @@ p
    font-size:medium;
 }
 
-#rightAside
+#sidebar
 {   
+   position:relative;
+   float:right;
    color:#3F2202;   
    width:15%;
    height:100%;
-   float:right;
-   position:absolute;
-   right:0px;
-   top:500px;
+   margin: 0 0 30px 40px;
+   width:180px;
+   display:inline-block;
+   
 }
-
-#rightAside p
+#categories
+{
+   margin: 40px 0 0 0px;
+}
+#categories p
 {
    color:#221111;
    font-family:Times New Roman;
@@ -178,12 +183,7 @@ footer
 }
 #blurb
 {
-   position:relative;
-   float:right;
-   width:200px;
-   padding:20px;
-   margin:0px 0px 10px 20px;
-   display:inline-block;
+   padding:10px;
    background-color:rgba(66,33,33,0.33);
 }
 

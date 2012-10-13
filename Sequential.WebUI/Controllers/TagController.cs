@@ -45,7 +45,7 @@ namespace Sequential2013.WebUI.Controllers {
 			thvm.PageSize = pageSize;
 			thvm.HasMorePages = thvm.RecentPosts.Count() > 0;
 			thvm.AllCategories = VModelFactory.AllCategories(
-										catRep.AllCategories(blogId));
+										catRep.AllCategories(blogId),blogId);
 			//thvm.News = VModelFactory.BlogPosts(catRep.RecentNews(5));
 			//thvm.Books = VModelFactory.Books(bookRep.AllBooks());
 			return View("PostsForTag",thvm);

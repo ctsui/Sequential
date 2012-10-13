@@ -7,22 +7,26 @@
 </div>
 <div id="blogContainer">
    <div id="twoColumns">
-      <div id="blurb">
-         <h3>About</h3>
-         <p>Lost in the wilderness of Africa, errant stewardess Holly Richey uncovers 
-         a secret Nazi expedition underway to secure a rich source of heavy water. Yet
-         something vastly stranger - and more dangerous - than even the threat of Nazi 
-         atomic weapons lies waiting to be discovered!
-         </p>  
+      <div id="sidebar">
+         <div id="blurb">
+            <h3>About</h3>
+            <p>Lost in the wilderness of Africa, errant stewardess Holly Richey uncovers 
+            a secret Nazi expedition underway to secure a rich source of heavy water. Yet
+            something vastly stranger and more dangerous than even the threat of Nazi 
+            atomic weapons lies waiting to be discovered!
+            </p>  
+         </div>
+         <div id="categories"> 
+            <hr />
+            @Html.Partial("BlogCategories",Model.AllCategories)
+            <hr/>
+         </div>
       </div>
+      <!-- 2nd column -->
       <div id="blogContent">
          @Html.Partial("BlogPost", Model.RecentPosts)
          @Html.Partial("BlogPostNav", Model)
       </div>
       <div style="clear:both;"</div>
-      <div id="rightAside"> 
-         @Html.Partial("BlogCategories",Model.AllCategories)
-      </div>
    </div>
-      
 </div>

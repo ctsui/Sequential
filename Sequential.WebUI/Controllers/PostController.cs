@@ -49,7 +49,7 @@ public class PostController : Controller
 		bhvm.BlogId = bid;
 		IQueryable<SeqPost> results = postsRep.GetPostPage(pageSize, pageNum, bid);
 		bhvm.RecentPosts = VModelFactory.BlogPosts(results);
-		bhvm.AllCategories = VModelFactory.AllCategories(catRep.AllCategories(bid));
+		bhvm.AllCategories = VModelFactory.AllCategories(catRep.AllCategories(bid),bid);
 		bhvm.CurrentPage = pageNum;
 		bhvm.PageSize = pageSize;
 		bhvm.HasMorePages = bhvm.RecentPosts.Count() > 0;
@@ -89,7 +89,8 @@ public class PostController : Controller
 		BlogHomeVModel bhvm = new BlogHomeVModel();
 		bhvm.BlogId = bid;
 		bhvm.RecentPosts = VModelFactory.BlogPosts(sp);
-		bhvm.AllCategories = VModelFactory.AllCategories(catRep.AllCategories(blogId));
+		bhvm.AllCategories = VModelFactory.AllCategories(
+										catRep.AllCategories(bid),bid);
 		return View(bhvm);
 	}
 	/// <summary>
