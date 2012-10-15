@@ -1,11 +1,14 @@
-﻿@model PagedVModel
+﻿@model TagHomeVModel
 <div id="blogNavControl">
-@if (Model.CurrentPage > 1) {
+@if (Model.CurrentPage > 1)
+{
    @Ajax.ActionLink("Newer Posts",
                      Html.Encode(Model.Action), Html.Encode(Model.Controller),
                      new {
-                        bid = Model.BlogId,
+                        //tagName = Model.Tag,
+                        tagId = Model.Id,
                         pageNum = Html.Encode(Model.CurrentPage - 1),
+                        bid = Model.BlogId
                      },
                      new AjaxOptions
                      {
@@ -29,13 +32,16 @@
                      HttpMethod = "GET"
                   })
 
-@if (Model.HasMorePages) {
+@if (Model.HasMorePages)
+{
    <text>|</text>
    @Ajax.ActionLink("Older Posts",
                      Html.Encode(Model.Action), Html.Encode(Model.Controller),
                      new {
-                        bid = Model.BlogId,
-                        pageNum = Html.Encode(Model.CurrentPage + 1)
+                        //tagName = Model.Tag,
+                        tagId = Model.Id,
+                        pageNum = Html.Encode(Model.CurrentPage + 1),
+                        bid = Model.BlogId
                      },
                      new AjaxOptions
                      {

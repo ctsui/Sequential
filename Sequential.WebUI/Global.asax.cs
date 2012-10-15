@@ -63,6 +63,14 @@ namespace Sequential2013.WebUI
 					order = "desc"
 				});
 
+			routes.MapRoute("TagAjax", "tagged/{tagId}/{pageNum}/{order}",
+				new {
+					controller = "Tag",
+					action = "AjaxPostsForTag",
+					tagName = UrlParameter.Optional,
+					order = "desc"
+				});
+
 			routes.MapRoute("Rss", "rss/",
 				new {
 					controller = "Post",

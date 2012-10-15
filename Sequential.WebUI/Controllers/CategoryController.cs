@@ -33,8 +33,10 @@ public class CategoryController : Controller {
 	public ActionResult PostsForCategory(string category, string order,
 														int pageNum = 1)
 	{
-		return View("PostsForCategory", 
-						GetPostsForCategory(null,category,order,pageNum));
+		PostsForCategoryVModel pcvm = GetPostsForCategory(	null, category,
+																			order, pageNum);
+		pcvm.Action = "PostsForCategory";
+		return View("PostsForCategory", pcvm);
 	}
 
 	/// <summary>
@@ -48,8 +50,9 @@ public class CategoryController : Controller {
 	public ActionResult AjaxPostsForCategory(	string bid, string category,
 															string order, int pageNum = 1)
 	{
-		return PartialView(	"AjaxPostsForCategory",
-									GetPostsForCategory(bid, category, order, pageNum));
+		PostsForCategoryVModel pcvm = GetPostsForCategory(bid, category, order, pageNum);
+		pcvm.Action = "AjaxPostsForCategory";
+		return PartialView("AjaxPostsForCategory", pcvm);
 	}
 
 	private PostsForCategoryVModel GetPostsForCategory(string bid, string category,
@@ -61,6 +64,7 @@ public class CategoryController : Controller {
 
 		PostsForCategoryVModel pcvm = new PostsForCategoryVModel(category);
 		pcvm.BlogId = bid;
+		pcvm.Controller = "Category";
 		pcvm.AllPosts = VModelFactory.BlogPosts(catPosts);
 		pcvm.CurrentPage = pageNum;
 		pcvm.PageSize = pageSize;

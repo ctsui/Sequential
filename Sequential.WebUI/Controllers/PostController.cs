@@ -76,7 +76,7 @@ public class PostController : Controller
 		bhvm.PageSize = pageSize;
 		bhvm.HasMorePages = bhvm.RecentPosts.Count() > 0;
 		bhvm.Controller = "post";
-		bhvm.Action = "PostPage";
+		bhvm.Action = "AjaxPostPage";
 		return PartialView(bhvm);
 	}
 
@@ -131,4 +131,4 @@ public class PostController : Controller
 		return Content(rss.ToString(), "application/rss+xml");
 	}
 } //end class PostController
-} //end namespace
+} //end namespace 

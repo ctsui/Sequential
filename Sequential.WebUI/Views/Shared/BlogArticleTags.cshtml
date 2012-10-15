@@ -1,0 +1,30 @@
+﻿@model BlogPostVModel
+@if (Model.HasTags()) {
+   <p>
+   Tagged:
+   @{
+      int totalTags = Model.Tags.Count();
+      int tagCount = 0;
+      foreach (TagVModel t in Model.Tags) 
+      {
+         @Ajax.ActionLink(Html.Encode(t.Name), "AjaxPostsForTag","Tag",
+                  new {
+                     tagId = t.TagId,
+                     pageNum = 1,
+                     bid = t.BlogId,
+                  },
+                  new AjaxOptions
+                  {
+                     UpdateTargetId = "blogContent",
+                     InsertionMode = InsertionMode.Replace,
+                     HttpMethod = "GET"
+                  })
+         tagCount++;
+         if (tagCount < totalTags)
+         {
+            <text>,</text>
+         }
+      }
+   }
+   </p>
+}

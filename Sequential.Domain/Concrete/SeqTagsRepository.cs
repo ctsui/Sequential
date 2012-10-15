@@ -51,7 +51,7 @@ namespace Sequential2013.Domain.Concrete {
 			}
 			return posts;
 		}
-
+		
       /// <summary>
       /// Gets the tags (i.e. keywords) for a post as a comma delimited string
       /// for use with MetaWeblog XMLRPC gateway response to GetPost.
@@ -85,14 +85,15 @@ namespace Sequential2013.Domain.Concrete {
       /// there is more than one match this method returns null.</returns>
       public SeqTag GetTag(string tagName, string blogId) {
          try {
-            SeqTag theTag = db.SeqTags.Single(t => t.Name == tagName);
+            SeqTag theTag = db.SeqTags.Single(	t => t.Name == tagName 
+																&& t.BlogId==blogId);
             return theTag;
          }
          catch (InvalidOperationException) { return null; }
       }
 
-		public SeqTag GetTag(int id) {
-			return db.SeqTags.SingleOrDefault(t => t.TagId == id);
+		public SeqTag GetTag(int id, string blogId) {
+			return db.SeqTags.SingleOrDefault(t => t.TagId == id && t.BlogId == blogId);
 		}
    }
 }

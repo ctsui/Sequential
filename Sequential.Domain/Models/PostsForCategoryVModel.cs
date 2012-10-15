@@ -3,7 +3,7 @@
 namespace Sequential2013.Domain.Models {
    public class PostsForCategoryVModel : BlogHomeVModel {
 
-      public List<BlogPostVModel> AllPosts { get; set; }
+		public List<BlogPostVModel> AllPosts { get; set; }
       public string Category { get; set;  }
 
       public PostsForCategoryVModel(string theCategory) {

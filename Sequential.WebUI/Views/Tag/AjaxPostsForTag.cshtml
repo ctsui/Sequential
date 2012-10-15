@@ -1,0 +1,9 @@
+﻿@model TagHomeVModel
+   <div id="SearchTerm">
+      <h4>Articles tagged &quot;@Model.Tag&quot;</h4>
+   </div>
+   @Html.Partial("BlogPost", Model.RecentPosts)
+   @Html.Partial("TagBlogPostNav", Model)
+   <div id="SearchTerm">
+      <h4>Articles tagged &quot;@Model.Tag&quot;</h4>
+   </div>
