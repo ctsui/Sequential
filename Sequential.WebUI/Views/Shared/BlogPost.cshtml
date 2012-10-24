@@ -7,13 +7,13 @@
 @foreach (BlogPostVModel post in Model)
 {
    <div id="post-@(post.BlogPostId)">
-      <h2>
-         @Html.ActionLink(post.Title, "GetSinglePost", "post",
+      <h1>@post.Title</h1>
+@*         @Html.ActionLink(post.Title, "GetSinglePost", "post",
                           new {
                              id = Html.Encode(post.BlogPostId),
                              title = Html.Encode(post.Permalink)
                           }, null)
-      </h2>
+      </h2>*@
       @* WLW2011 generates inline styled HTML that is stored in Sequential DB so use raw. *@
       @Html.Raw(post.Description)
       @if (post.HasExtendedDescription())

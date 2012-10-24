@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using Sequential2013.Domain.Abstract;
 using Sequential2013.Domain.Models;
+using System.Web;
+using System;
 
 namespace Sequential2013.WebUI.Controllers
 {
@@ -19,8 +21,7 @@ namespace Sequential2013.WebUI.Controllers
 /// </summary>
 public class WebComicController : PostController
 {
-
-	public WebComicController(	ISeqPostsRepository pRep,
+	public WebComicController(ISeqPostsRepository pRep,
 										ISeqCategoriesRepository cRep,
 										ISeqTagsRepository tRep)
 		: base(pRep, cRep, tRep) { }
@@ -42,22 +43,53 @@ public class WebComicController : PostController
 	/// <returns>A view that can be shown for any comic and/or blog article
 	/// request.</returns>
 	public ActionResult FullPathEntry(	string comic, int chapter, int page,
-													string perma=null, int id = -1)
+													string perma = null, int id = -1,
+													bool rootEntry=false)
 	{
+		//TODO: Check for cookie and if none then set the page number.
+		HttpCookie cookie = Request.Cookies.Get(comic + "_bookmark");
+		if (cookie == null)
+		{
+			TimeSpan expirytime = new TimeSpan(120, 0, 0, 0);
+			HttpCookie hc = new HttpCookie(comic + "_bookmark", "eden|1|1");
+			hc.Expires = DateTime.Today.Add(expirytime);
+			Response.Cookies.Add(hc);
+		} 
+		else //A cookie was found...account for 2 cases...
+		{
+			if (rootEntry) //User typed in just the base url.
+			{
+				string[] parts = cookie.Value.Split('|');
+				comic = parts[0];
+				chapter = Int32.Parse(parts[1]);
+				page = Int32.Parse(parts[2]);
+			} 
+			else //User typed in an explicit url to get here so preserve in cookie
+			{
+				TimeSpan expirytime = new TimeSpan(120, 0, 0, 0);
+				cookie.Expires = DateTime.Today.Add(expirytime);
+				cookie.Value = comic + "|" + chapter + "|" + page;
+				Response.Cookies.Add(cookie);
+			}
+		}
+
 		ViewResult result;
 		//Specific blog identified 
-		if (id > 0) {
-			result = (ViewResult)base.GetSinglePost(comic,id);
-		} else {
-			 result = (ViewResult)base.Index(comic);
+		if (id > 0)
+		{
+			result = (ViewResult)base.GetSinglePost(comic, id);
+		} 
+		else
+		{
+			result = (ViewResult)base.Index(comic);
 		}
-		WebComicVModel wcvm = new WebComicVModel((BlogHomeVModel) result.Model);
+		WebComicVModel wcvm = new WebComicVModel((BlogHomeVModel)result.Model);
 		wcvm.BookName = comic;
 		wcvm.ChapterNumber = chapter;
 		wcvm.PageNumber = page;
-		//wcvm.Controller = "WebComic";
-		//wcvm.Action = "FullPathEntry"; //Need PartialView action like TurnPage
-		return View("Index",wcvm);
+		wcvm.Controller = "Post";
+		wcvm.Action = "AjaxPostPage"; //Need PartialView action like TurnPage
+		return View("Index", wcvm);
 	}
 
 	/// <summary>
@@ -73,7 +105,16 @@ public class WebComicController : PostController
 	/// controls.</returns>
 	public ActionResult TurnPage(string comic, int chapter, int page)
 	{
-		//If No Cookie in HttpRequest then start at the beginning
+		//If cookie then extend expires and update the value
+		HttpCookie cookie = Request.Cookies.Get(comic + "_bookmark");
+		if (cookie != null)
+		{
+			TimeSpan expirytime = new TimeSpan(120, 0, 0, 0);
+			cookie.Expires = DateTime.Today.Add(expirytime);
+			cookie.Value = comic + "|" + chapter + "|" + page;
+		}
+		Response.Cookies.Add(cookie);
+
 		WebComicVModel wcvm = new WebComicVModel();
 		wcvm.BookName = comic;
 		wcvm.ChapterNumber = chapter;
@@ -96,7 +137,7 @@ public class WebComicController : PostController
 		int lastChapter = 1;
 		int lastPage = 1;
 		//By not providing an article id this method fetches the most recent post.
-		return FullPathEntry(comic, lastChapter, lastPage);
+		return FullPathEntry(comic, lastChapter, lastPage, null, -1, true);
 	}
 
 } //end class WebComicController

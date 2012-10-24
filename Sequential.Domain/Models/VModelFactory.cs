@@ -55,7 +55,6 @@ namespace Sequential2013.Domain.Models {
 				book = new BookVModel();
 				book.Title = b.Title;
 				book.PageCount = b.PageCount;
-				book.Status = (BookStatus) b.Status;
 				bookList.Add(book);
 			}
 			return bookList;

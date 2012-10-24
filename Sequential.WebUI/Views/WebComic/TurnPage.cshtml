@@ -1,4 +1,5 @@
-﻿@model WebComicVModel
+﻿@using Sequential2013.WebUI.Infrastructure
+@model WebComicVModel
 @{
    string NextPage = Convert.ToString(Model.PageNumber + 1);
    int prev = Model.PageNumber - 1;
@@ -14,10 +15,9 @@
    </div>
 </div>
 <nav id="pageNav">
-            Cover | 
-            @Ajax.ActionLink("Prev", "TurnPage",
+            @Ajax.ActionLink(" ", "TurnPage",
                 new {
-                   comic = "eden",
+                   comic = @Model.BookName,
                    chapter = @Model.ChapterNumber,
                    page = @PrevPage
                 },
@@ -25,18 +25,15 @@
                 {
                    UpdateTargetId = "main",
                    InsertionMode = InsertionMode.Replace,
-                   HttpMethod = "GET",
-
+                   HttpMethod = "GET"
                 },
                 new {
-                   id = "prevPage"
+                   @class="leftArrow"
                 })
-            |
-            <span>@Model.PageNumber of 23</span>
-            |
-            @Ajax.ActionLink("Next", "TurnPage",
+            <div id="pageCounter">@Model.PageNumber of 23</div>
+            @Ajax.ActionLink(" ", "TurnPage",
                 new {
-                   comic = "eden",
+                   comic = @Model.BookName,
                    chapter = @Model.ChapterNumber,
                    page = @NextPage
                 },
@@ -47,6 +44,6 @@
                    HttpMethod = "GET"
                 },
                 new {
-                   id = "nextPage"
+                   @class="rightArrow"
                 })
-        </nav>
+</nav>

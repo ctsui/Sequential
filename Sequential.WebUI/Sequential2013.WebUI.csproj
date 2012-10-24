@@ -105,6 +105,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ImageActionLinkHelper.cs" />
     <Compile Include="Infrastructure\MetaWebLogRouteHandler.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,9 +121,13 @@
     <Content Include="Content\manifest\images\StoryAndArtBannerFlat.png" />
     <Content Include="Content\themes\eden\css\layout.css" />
     <Content Include="Content\themes\eden\css\normalize.css" />
-    <Content Include="Content\themes\eden\images\EdenExpedition60.png" />
+    <Content Include="Content\themes\eden\images\EdenExpedition54.png" />
+    <Content Include="Content\themes\eden\images\next.png" />
     <Content Include="Content\themes\eden\images\oldMapOverlay.png" />
-    <Content Include="Content\themes\eden\images\OldParchment.jpg" />
+    <Content Include="Content\themes\eden\images\OldParchmentCutOut.jpg" />
+    <Content Include="Content\themes\eden\images\previous.png" />
+    <Content Include="Content\themes\eden\images\rss.png" />
+    <Content Include="Content\themes\eden\images\Twitter.png" />
     <Content Include="Content\themes\sputnikx\css\Failures.css" />
     <Content Include="Content\manifest\images\Borders.png" />
     <Content Include="Content\themes\sputnikx\css\normalize.css" />

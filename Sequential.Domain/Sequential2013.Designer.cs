@@ -246,19 +246,15 @@ namespace Sequential2013.Domain
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="pageCount">Initial value of the PageCount property.</param>
         /// <param name="lastUpdated">Initial value of the LastUpdated property.</param>
-        /// <param name="status">Initial value of the Status property.</param>
         /// <param name="uriContext">Initial value of the UriContext property.</param>
-        /// <param name="featured">Initial value of the Featured property.</param>
-        public static SeqBook CreateSeqBook(global::System.Int32 bookId, global::System.String title, global::System.Int32 pageCount, global::System.DateTime lastUpdated, global::System.Int32 status, global::System.String uriContext, global::System.Boolean featured)
+        public static SeqBook CreateSeqBook(global::System.Int32 bookId, global::System.String title, global::System.Int32 pageCount, global::System.DateTime lastUpdated, global::System.String uriContext)
         {
             SeqBook seqBook = new SeqBook();
             seqBook.BookId = bookId;
             seqBook.Title = title;
             seqBook.PageCount = pageCount;
             seqBook.LastUpdated = lastUpdated;
-            seqBook.Status = status;
             seqBook.UriContext = uriContext;
-            seqBook.Featured = featured;
             return seqBook;
         }
 
@@ -369,30 +365,6 @@ namespace Sequential2013.Domain
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Status
-        {
-            get
-            {
-                return _Status;
-            }
-            set
-            {
-                OnStatusChanging(value);
-                ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Status");
-                OnStatusChanged();
-            }
-        }
-        private global::System.Int32 _Status;
-        partial void OnStatusChanging(global::System.Int32 value);
-        partial void OnStatusChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.String UriContext
         {
             get
@@ -411,30 +383,6 @@ namespace Sequential2013.Domain
         private global::System.String _UriContext;
         partial void OnUriContextChanging(global::System.String value);
         partial void OnUriContextChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean Featured
-        {
-            get
-            {
-                return _Featured;
-            }
-            set
-            {
-                OnFeaturedChanging(value);
-                ReportPropertyChanging("Featured");
-                _Featured = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Featured");
-                OnFeaturedChanged();
-            }
-        }
-        private global::System.Boolean _Featured;
-        partial void OnFeaturedChanging(global::System.Boolean value);
-        partial void OnFeaturedChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -713,12 +661,14 @@ namespace Sequential2013.Domain
         /// <param name="chapterId">Initial value of the ChapterId property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="seqBookBookId">Initial value of the SeqBookBookId property.</param>
-        public static SeqChapter CreateSeqChapter(global::System.Int32 chapterId, global::System.String title, global::System.Int32 seqBookBookId)
+        /// <param name="pageCount">Initial value of the PageCount property.</param>
+        public static SeqChapter CreateSeqChapter(global::System.Int32 chapterId, global::System.String title, global::System.Int32 seqBookBookId, global::System.Int32 pageCount)
         {
             SeqChapter seqChapter = new SeqChapter();
             seqChapter.ChapterId = chapterId;
             seqChapter.Title = title;
             seqChapter.SeqBookBookId = seqBookBookId;
+            seqChapter.PageCount = pageCount;
             return seqChapter;
         }
 
@@ -823,6 +773,30 @@ namespace Sequential2013.Domain
         private global::System.Int32 _SeqBookBookId;
         partial void OnSeqBookBookIdChanging(global::System.Int32 value);
         partial void OnSeqBookBookIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PageCount
+        {
+            get
+            {
+                return _PageCount;
+            }
+            set
+            {
+                OnPageCountChanging(value);
+                ReportPropertyChanging("PageCount");
+                _PageCount = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PageCount");
+                OnPageCountChanged();
+            }
+        }
+        private global::System.Int32 _PageCount;
+        partial void OnPageCountChanging(global::System.Int32 value);
+        partial void OnPageCountChanged();
 
         #endregion
     
@@ -905,13 +879,11 @@ namespace Sequential2013.Domain
         /// Create a new SeqPage object.
         /// </summary>
         /// <param name="pageId">Initial value of the PageId property.</param>
-        /// <param name="fileName">Initial value of the FileName property.</param>
         /// <param name="seqChapterChapterId">Initial value of the SeqChapterChapterId property.</param>
-        public static SeqPage CreateSeqPage(global::System.Int32 pageId, global::System.String fileName, global::System.Int32 seqChapterChapterId)
+        public static SeqPage CreateSeqPage(global::System.Int32 pageId, global::System.Int32 seqChapterChapterId)
         {
             SeqPage seqPage = new SeqPage();
             seqPage.PageId = pageId;
-            seqPage.FileName = fileName;
             seqPage.SeqChapterChapterId = seqChapterChapterId;
             return seqPage;
         }
@@ -949,30 +921,6 @@ namespace Sequential2013.Domain
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String FileName
-        {
-            get
-            {
-                return _FileName;
-            }
-            set
-            {
-                OnFileNameChanging(value);
-                ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("FileName");
-                OnFileNameChanged();
-            }
-        }
-        private global::System.String _FileName;
-        partial void OnFileNameChanging(global::System.String value);
-        partial void OnFileNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public Nullable<global::System.Int16> PageNum
@@ -993,30 +941,6 @@ namespace Sequential2013.Domain
         private Nullable<global::System.Int16> _PageNum;
         partial void OnPageNumChanging(Nullable<global::System.Int16> value);
         partial void OnPageNumChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Title
-        {
-            get
-            {
-                return _Title;
-            }
-            set
-            {
-                OnTitleChanging(value);
-                ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Title");
-                OnTitleChanged();
-            }
-        }
-        private global::System.String _Title;
-        partial void OnTitleChanging(global::System.String value);
-        partial void OnTitleChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
