@@ -1,28 +1,33 @@
 ﻿using System.Data.Linq;
 using System.Linq;
-using Sequential.Domain.Abstract;
+using Sequential2013.Domain.Abstract;
 using Sequential2013.Domain;
 
-namespace Sequential.Domain.Concrete {
+namespace Sequential2013.Domain.Concrete {
 	public class SeqBooksRepository :ISeqBooksRepository {
 
-		private Table<SeqBook> readBooks;
+		private SeqEFContext db;
 
 		public SeqBooksRepository(string connectionString) {
-			EntitiesDataContext EDCRead = new EntitiesDataContext(connectionString);
-			readBooks = EDCRead.GetTable<SeqBook>();
+			db = new SeqEFContext(connectionString);
 		}
 
 		public IQueryable<SeqBook> AllBooks() {
-			return readBooks;
+			return db.SeqBooks;
 		}
 
 		public SeqBook GetBook(string title) {
-			return readBooks.SingleOrDefault(b => b.Title == title);
+			return db.SeqBooks.SingleOrDefault(b => b.Title == title);
 		}
 
 		public SeqBook BookUriContext(string context) {
-			return readBooks.SingleOrDefault(b => b.UriContext == context);
+			return db.SeqBooks.SingleOrDefault(b => b.UriContext == context);
+		}
+
+		public SeqChapter GetChapter(string context, int chapterNum)
+		{
+			SeqBook book = BookUriContext(context);
+			return book.SeqChapters.SingleOrDefault(c => c.ChapterNum == chapterNum);
 		}
 	}
 }

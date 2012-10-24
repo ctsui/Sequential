@@ -42,11 +42,11 @@ namespace Sequential2013.WebUI.Infrastructure
 					.WithConstructorArgument("connectionString",
 						ConfigurationManager.ConnectionStrings["AppDb"]
 												  .ConnectionString);
-				//Bind<ISeqBooksRepository>()
-				//   .To<SeqBooksRepository>()
-				//   .WithConstructorArgument("connectionString",
-				//      ConfigurationManager.ConnectionStrings["AppDb"]
-				//                          .ConnectionString);
+				Bind<ISeqBooksRepository>()
+				   .To<SeqBooksRepository>()
+				   .WithConstructorArgument("connectionString",
+				      ConfigurationManager.ConnectionStrings["AppDb"]
+				                          .ConnectionString);
          }
       }
    } //end class

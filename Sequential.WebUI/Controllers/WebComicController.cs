@@ -3,6 +3,7 @@ using Sequential2013.Domain.Abstract;
 using Sequential2013.Domain.Models;
 using System.Web;
 using System;
+using Sequential2013.Domain;
 
 namespace Sequential2013.WebUI.Controllers
 {
@@ -21,10 +22,16 @@ namespace Sequential2013.WebUI.Controllers
 /// </summary>
 public class WebComicController : PostController
 {
-	public WebComicController(ISeqPostsRepository pRep,
+	private ISeqBooksRepository booksRep;
+
+	public WebComicController(	ISeqPostsRepository pRep,
 										ISeqCategoriesRepository cRep,
-										ISeqTagsRepository tRep)
-		: base(pRep, cRep, tRep) { }
+										ISeqTagsRepository tRep,
+										ISeqBooksRepository bRep)
+		: base(pRep, cRep, tRep) 
+	{
+		booksRep = bRep;
+	}
 
 	/// <summary>
 	/// Processes a URI that can reference a page of a comic as well as a specific
@@ -51,7 +58,7 @@ public class WebComicController : PostController
 		if (cookie == null)
 		{
 			TimeSpan expirytime = new TimeSpan(120, 0, 0, 0);
-			HttpCookie hc = new HttpCookie(comic + "_bookmark", "eden|1|1");
+			HttpCookie hc = new HttpCookie(comic + "_bookmark", comic+"|1|1");
 			hc.Expires = DateTime.Today.Add(expirytime);
 			Response.Cookies.Add(hc);
 		} 
@@ -83,10 +90,14 @@ public class WebComicController : PostController
 		{
 			result = (ViewResult)base.Index(comic);
 		}
+
+		SeqChapter schapter = booksRep.GetChapter(comic, chapter);
+
 		WebComicVModel wcvm = new WebComicVModel((BlogHomeVModel)result.Model);
 		wcvm.BookName = comic;
 		wcvm.ChapterNumber = chapter;
-		wcvm.PageNumber = page;
+		wcvm.PageNumber = (page > schapter.PageCount) ? schapter.PageCount : page;
+		wcvm.ChapterPageCount = schapter.PageCount;
 		wcvm.Controller = "Post";
 		wcvm.Action = "AjaxPostPage"; //Need PartialView action like TurnPage
 		return View("Index", wcvm);
@@ -115,10 +126,12 @@ public class WebComicController : PostController
 		}
 		Response.Cookies.Add(cookie);
 
+		SeqChapter schapter = booksRep.GetChapter(comic, chapter);
 		WebComicVModel wcvm = new WebComicVModel();
 		wcvm.BookName = comic;
 		wcvm.ChapterNumber = chapter;
-		wcvm.PageNumber = page;
+		wcvm.PageNumber = (page > schapter.PageCount) ? schapter.PageCount : page;
+		wcvm.ChapterPageCount = schapter.PageCount;
 		return PartialView(wcvm);
 	}
 
@@ -133,10 +146,8 @@ public class WebComicController : PostController
 	public ActionResult MostRecentAll(string comic)
 	{
 		//TODO: Check that comic is in SeqBook collection. If not then reject.
-		//TODO: Read database for lastest comic chapter/page or override with cookie.
 		int lastChapter = 1;
 		int lastPage = 1;
-		//By not providing an article id this method fetches the most recent post.
 		return FullPathEntry(comic, lastChapter, lastPage, null, -1, true);
 	}
 

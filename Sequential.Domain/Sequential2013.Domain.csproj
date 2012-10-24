@@ -64,6 +64,7 @@
     <Compile Include="Abstract\ISeqPostsRepository.cs" />
     <Compile Include="Abstract\ISeqTagsRepository.cs" />
     <Compile Include="Concrete\MetaWeblog.cs" />
+    <Compile Include="Concrete\SeqBooksRepository.cs" />
     <Compile Include="Concrete\SeqCategoriesRepository.cs" />
     <Compile Include="Concrete\SeqPostsRepository.cs" />
     <Compile Include="Concrete\SeqTagsRepository.cs" />

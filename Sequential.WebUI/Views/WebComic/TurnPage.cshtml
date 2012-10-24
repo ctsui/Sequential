@@ -30,7 +30,7 @@
                 new {
                    @class="leftArrow"
                 })
-            <div id="pageCounter">@Model.PageNumber of 23</div>
+            <div id="pageCounter">@Model.PageNumber of @Model.ChapterPageCount</div>
             @Ajax.ActionLink(" ", "TurnPage",
                 new {
                    comic = @Model.BookName,
