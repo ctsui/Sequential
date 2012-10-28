@@ -19,6 +19,21 @@
                 new {
                    comic = @Model.BookName,
                    chapter = @Model.ChapterNumber,
+                   page = "1"
+                },
+                new AjaxOptions
+                {
+                   UpdateTargetId = "main",
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET"
+                },
+                new {
+                   @class="skipBackward"
+                })
+            @Ajax.ActionLink(" ", "TurnPage",
+                new {
+                   comic = @Model.BookName,
+                   chapter = @Model.ChapterNumber,
                    page = @PrevPage
                 },
                 new AjaxOptions
@@ -45,5 +60,20 @@
                 },
                 new {
                    @class="rightArrow"
+                })
+            @Ajax.ActionLink(" ", "TurnPage",
+                new {
+                   comic = @Model.BookName,
+                   chapter = @Model.ChapterNumber,
+                   page = @Model.ChapterPageCount
+                },
+                new AjaxOptions
+                {
+                   UpdateTargetId = "main",
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET"
+                },
+                new {
+                   @class="skipForward"
                 })
 </nav>

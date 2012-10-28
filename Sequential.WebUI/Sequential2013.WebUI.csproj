@@ -127,6 +127,7 @@
     <Content Include="Content\themes\eden\images\OldParchmentCutOut.jpg" />
     <Content Include="Content\themes\eden\images\previous.png" />
     <Content Include="Content\themes\eden\images\rss.png" />
+    <Content Include="Content\themes\eden\images\skipForward.png" />
     <Content Include="Content\themes\eden\images\Twitter.png" />
     <Content Include="Content\themes\sputnikx\css\Failures.css" />
     <Content Include="Content\manifest\images\Borders.png" />

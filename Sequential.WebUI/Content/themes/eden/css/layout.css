@@ -51,6 +51,7 @@ p
 p.datetime
 {
    color:#733030;
+   font-size:small;
 }
 
 html,body
@@ -202,9 +203,9 @@ footer
    position:relative;
    margin-bottom:5px;
    padding: 0 5px 0 5px;
-   top:-10px;
+   top:-8px;
    font-family:Tahoma, Arial, Helvetica;
-   font-size:small;
+   font-size:medium;
    color:Black;
 }
 
@@ -221,6 +222,36 @@ a.rightArrow
 a.rightArrow:hover
 {
    background-position:-29px 0;
+}
+
+a.skipForward
+{
+   display:inline-block;
+   width:30px;
+   height:28px;
+   background-image:url("../images/skipForward.png");
+   background-repeat:no-repeat;
+   text-decoration:none;
+}
+
+a.skipForward:hover
+{
+   background-position:-30px 0;
+}
+
+a.skipBackward
+{
+   display:inline-block;
+   width:30px;
+   height:28px;
+   background-image:url("../images/skipBackward.png");
+   background-repeat:no-repeat;
+   text-decoration:none;
+}
+
+a.skipBackward:hover
+{
+   background-position:-30px 0;
 }
 
 a.leftArrow:hover

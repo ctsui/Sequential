@@ -4,17 +4,18 @@
 {
    <p>No more posts.</p>
 }
+
 @foreach (BlogPostVModel post in Model)
 {
+   TimeZoneInfo estZ = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+   DateTime estTime = TimeZoneInfo.ConvertTime(post.CreateDate, TimeZoneInfo.Utc, estZ);
    <div id="post-@(post.BlogPostId)">
-      <h1>@post.Title</h1>
-@*         @Html.ActionLink(post.Title, "GetSinglePost", "post",
-                          new {
-                             id = Html.Encode(post.BlogPostId),
-                             title = Html.Encode(post.Permalink)
-                          }, null)
-      </h2>*@
+      <h1>@post.Title</h1>   
       @* WLW2011 generates inline styled HTML that is stored in Sequential DB so use raw. *@
+      <p class="datetime">
+         Posted @String.Format("{0:dddd, MMMM d, yyyy - h:mm tt}", estTime)
+      </p>
+      <br />
       @Html.Raw(post.Description)
       @if (post.HasExtendedDescription())
       {
@@ -28,13 +29,7 @@
          </p>
       }
    </div>
-   @Html.Partial("BlogArticleTags",post)
    <br />
-   TimeZoneInfo estZ = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
-   DateTime estTime = TimeZoneInfo.ConvertTime(post.CreateDate, TimeZoneInfo.Utc, estZ);
-   <p class="datetime">
-      @String.Format("{0:dddd, MMMM d, yyyy - h:mm tt} ({1})", estTime,
-                     estZ.IsDaylightSavingTime(estTime) ? estZ.DaylightName : estZ.StandardName)
-   </p>
+   @Html.Partial("BlogArticleTags", post)
    <hr />
 }
