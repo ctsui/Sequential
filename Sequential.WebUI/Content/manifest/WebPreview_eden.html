@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <title>Sequential - Preview View</title>
+   <link rel="stylesheet" type="text/css" href="/Content/manifest/css/layout_ie7.css" />
+</head>
+<body>
+   <!--
+   <div id="PageContainer">
+      <div id="TopBanner">
+      </div>
+      <div id="ContentContainer">
+         <div id="Blog">
+            <h2><a href="#">{post-title}</a></h2>
+            <p>{post-body}</p>
+         </div>
+
+         <div class="push"></div>
+      </div>
+   </div>
+   <div id="Footer">
+      <h3>About the Creator</h3>
+      <p class="profile">It's me. I like to make comics although I often spend a lot of time programming and therefore don't make as many comics as I'd like. If you like this give me a thumbs up!</p>
+   </div>
+   -->
+   <div id="pageContainer">
+      <header id="pageHeader">
+         <img id="logo" src="/content/themes/eden/images/EdenExpedition54.png" />
+         <div id="socialNetworks">
+            <img id="rss" width="32" height="32" src="/content/themes/eden/images/rss.png" />
+         </div>
+      </header>
+      
+      <div id="main">
+         <div id="comic">
+            <div id="slot1" class="slot">
+               <img width="800" height="480" src="/content/comics/Eden/edenC1P1.jpg" />
+            </div>
+         </div>
+         <div id="pageNav">
+            <a class="skipBackward" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#main" href="/turnpage/eden/chapter1/page1"> </a>
+            <a class="leftArrow" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#main" href="/turnpage/eden/chapter1/page1"> </a>
+            <div id="pageCounter">1 of 4</div>
+            <a class="rightArrow" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#main" href="/turnpage/eden/chapter1/page2"> </a>
+            <a class="skipForward" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#main" href="/turnpage/eden/chapter1/page4"> </a>
+         </div>
+      </div>
+      
+      <div id="blogContainer">
+         <div id="twoColumns">
+            
+            <div id="sidebar">
+               <div id="blurb">
+                  <h2>Lost in the </h2>
+                  <p>
+                     wilderness of Africa, errant stewardess Holly Richey uncovers 
+            a secret Nazi expedition underway to secure a rich source of heavy water. Yet
+            something vastly stranger and more dangerous than even the threat of Nazi 
+            atomic weapons lies waiting to be discovered!
+                  </p>
+               </div>
+               <div id="categories">
+                  <div id="topics">
+                     <h3>Categories</h3>
+                     <ul>
+                        <li><a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#blogContent" href="/Category/AjaxPostsForCategory?bid=eden&amp;category=Uncategorized&amp;order=desc&amp;pageNum=1">Uncategorized (3)</a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            
+            <!-- 2nd column -->
+            <div id="blogContent">
+               <div id="post-8">
+                  <h1>{post-title}</h1>
+                  <p>{post-body}</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

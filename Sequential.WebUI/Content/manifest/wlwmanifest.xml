@@ -35,11 +35,11 @@
    </options>
    <weblog>
       <serviceName>Sequential MetaWeblog</serviceName>
-      <homepageLinkText>Sequential 2011</homepageLinkText>
+      <homepageLinkText>Sequential 2013</homepageLinkText>
    </weblog>
    <views>
       <default>WebLayout</default>
-      <view type="WebPreview" src="http://sputnikx.com/"/>
-      <view type="WebLayout" src="WebLayout.html"/>
+      <view type="WebPreview" src="WebPreview_{blog-id}.html"/>
+      <view type="WebLayout" src="WebLayout_{blog-id}.html"/>
    </views>
 </manifest>

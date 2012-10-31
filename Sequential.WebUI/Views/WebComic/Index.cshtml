@@ -4,26 +4,26 @@
 }
 <div id="main">
    @Html.Partial("TurnPage")
-</div>
-<div id="blogContainer">
-   <div id="twoColumns">
-      <div id="sidebar">
-         <div id="blurb">
-            <h2>Lost in the </h2><p>wilderness of Africa, errant stewardess Holly Richey uncovers 
-            a secret Nazi expedition underway to secure a rich source of heavy water. Yet
-            something vastly stranger and more dangerous than even the threat of Nazi 
-            atomic weapons lies waiting to be discovered!
-            </p>  
-         </div>
-         <div id="categories"> 
-            @Html.Partial("BlogCategories",Model.AllCategories)
+      </div>
+      <div id="blogContainer">
+         <div id="twoColumns">
+            <div id="sidebar">
+               <div id="blurb">
+                  <h2>Lost in the </h2><p>wilderness of Africa, errant stewardess Holly Richey uncovers 
+                  a secret Nazi expedition underway to secure a rich source of heavy water. Yet
+                  something vastly stranger and more dangerous than even the threat of Nazi 
+                  atomic weapons lies waiting to be discovered!
+                  </p>  
+               </div>
+               <div id="categories"> 
+                  @Html.Partial("BlogCategories",Model.AllCategories)
+               </div>
+            </div>
+            <!-- 2nd column -->
+            <div id="blogContent">
+               @Html.Partial("BlogPost", Model.RecentPosts)
+               @Html.Partial("BlogPostNav", Model)
+            </div>
+            <div style="clear:both;"</div>
          </div>
       </div>
-      <!-- 2nd column -->
-      <div id="blogContent">
-         @Html.Partial("BlogPost", Model.RecentPosts)
-         @Html.Partial("BlogPostNav", Model)
-      </div>
-      <div style="clear:both;"</div>
-   </div>
-</div>

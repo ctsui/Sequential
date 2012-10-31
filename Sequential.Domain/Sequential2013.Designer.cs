@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -171,6 +172,7 @@ namespace Sequential2013.Domain
         private ObjectSet<SeqCategory> _SeqCategories;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -222,11 +224,11 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -259,6 +261,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -433,6 +436,7 @@ namespace Sequential2013.Domain
         partial void OnDescriptionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -459,6 +463,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -491,6 +496,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -617,6 +623,7 @@ namespace Sequential2013.Domain
         partial void OnBlogIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -643,6 +650,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -673,6 +681,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -799,6 +808,7 @@ namespace Sequential2013.Domain
         partial void OnPageCountChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -863,6 +873,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -889,6 +900,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -967,6 +979,7 @@ namespace Sequential2013.Domain
         partial void OnSeqChapterChapterIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1031,6 +1044,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1061,6 +1075,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1307,6 +1322,7 @@ namespace Sequential2013.Domain
         partial void OnBlogIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1371,6 +1387,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1403,6 +1420,7 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1529,6 +1547,7 @@ namespace Sequential2013.Domain
         partial void OnBlogIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1577,8 +1596,10 @@ namespace Sequential2013.Domain
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

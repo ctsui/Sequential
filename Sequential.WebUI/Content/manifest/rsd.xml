@@ -3,15 +3,15 @@
    <service>
       <engineName>Sequential 2013</engineName>
       
-      <engineLink>http://localhost/sequential/xmlrpc</engineLink>
-      <homePageLink>http://localhost/sequential/eden</homePageLink>
+      <engineLink>http://localhost:8888/xmlrpc</engineLink>
+      <homePageLink>http://localhost:8888/eden</homePageLink>
       <!--
       <engineLink>http://sputnikx.com/xmlrpc</engineLink>
       <homePageLink>http://sputnikx.com/eden</homePageLink>
       -->
       <apis>
          <!--<api name="MetaWeblog" preferred="true" apiLink="http://sputnikx.com/xmlrpc" blogID="SputnikxCom" />-->
-         <api name="MetaWeblog" preferred="true" apiLink="http://localhost/sequential/xmlrpc" blogID="eden" />
+         <api name="MetaWeblog" preferred="true" apiLink="http://localhost:8888/xmlrpc" blogID="eden" />
       </apis>
    </service>
 </rsd>

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequential2013.Domain", "Sequential.Domain\Sequential2013.Domain.csproj", "{87EBF2EA-AA9D-45DF-9911-A89F339FCDC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequential2013.WebUI", "Sequential.WebUI\Sequential2013.WebUI.csproj", "{41B10EB6-8D49-4316-8AC3-01C29962F90A}"

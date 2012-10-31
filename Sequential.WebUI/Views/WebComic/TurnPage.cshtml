@@ -9,71 +9,71 @@
    string PrevPage = Convert.ToString(prev);
    string ImagePath = "~/content/comics/Eden/" + @Model.FileName() + ".jpg";
 }
-<div id="comic">
-   <div id="slot1" class="slot">
-      <img width="800" height="480" src="@Url.Content(@ImagePath)"/>
-   </div>
-</div>
-<nav id="pageNav">
+      <div id="comic">
+            <div id="slot1" class="slot">
+               <img width="800" height="480" src="@Url.Content(@ImagePath)"/>
+            </div>
+         </div>
+         <div id="pageNav">
             @Ajax.ActionLink(" ", "TurnPage",
-                new {
-                   comic = @Model.BookName,
-                   chapter = @Model.ChapterNumber,
-                   page = "1"
-                },
-                new AjaxOptions
-                {
-                   UpdateTargetId = "main",
-                   InsertionMode = InsertionMode.Replace,
-                   HttpMethod = "GET"
-                },
-                new {
-                   @class="skipBackward"
-                })
+                  new {
+                     comic = @Model.BookName,
+                     chapter = @Model.ChapterNumber,
+                     page = "1"
+                  },
+                  new AjaxOptions
+                  {
+                     UpdateTargetId = "main",
+                     InsertionMode = InsertionMode.Replace,
+                     HttpMethod = "GET"
+                  },
+                  new {
+                     @class="skipBackward"
+                  })
             @Ajax.ActionLink(" ", "TurnPage",
-                new {
-                   comic = @Model.BookName,
-                   chapter = @Model.ChapterNumber,
-                   page = @PrevPage
-                },
-                new AjaxOptions
-                {
-                   UpdateTargetId = "main",
-                   InsertionMode = InsertionMode.Replace,
-                   HttpMethod = "GET"
-                },
-                new {
-                   @class="leftArrow"
-                })
+                  new {
+                     comic = @Model.BookName,
+                     chapter = @Model.ChapterNumber,
+                     page = @PrevPage
+                  },
+                  new AjaxOptions
+                  {
+                     UpdateTargetId = "main",
+                     InsertionMode = InsertionMode.Replace,
+                     HttpMethod = "GET"
+                  },
+                  new {
+                     @class="leftArrow"
+                  })
             <div id="pageCounter">@Model.PageNumber of @Model.ChapterPageCount</div>
             @Ajax.ActionLink(" ", "TurnPage",
-                new {
-                   comic = @Model.BookName,
-                   chapter = @Model.ChapterNumber,
-                   page = @NextPage
-                },
-                new AjaxOptions
-                {
-                   UpdateTargetId = "main",
-                   InsertionMode = InsertionMode.Replace,
-                   HttpMethod = "GET"
-                },
-                new {
-                   @class="rightArrow"
-                })
+                  new {
+                     comic = @Model.BookName,
+                     chapter = @Model.ChapterNumber,
+                     page = @NextPage
+                  },
+                  new AjaxOptions
+                  {
+                     UpdateTargetId = "main",
+                     InsertionMode = InsertionMode.Replace,
+                     HttpMethod = "GET"
+                  },
+                  new {
+                     @class="rightArrow"
+                  })
             @Ajax.ActionLink(" ", "TurnPage",
-                new {
-                   comic = @Model.BookName,
-                   chapter = @Model.ChapterNumber,
-                   page = @Model.ChapterPageCount
-                },
-                new AjaxOptions
-                {
-                   UpdateTargetId = "main",
-                   InsertionMode = InsertionMode.Replace,
-                   HttpMethod = "GET"
-                },
-                new {
-                   @class="skipForward"
-                })
-</nav>
+                  new {
+                     comic = @Model.BookName,
+                     chapter = @Model.ChapterNumber,
+                     page = @Model.ChapterPageCount
+                  },
+                  new AjaxOptions
+                  {
+                     UpdateTargetId = "main",
+                     InsertionMode = InsertionMode.Replace,
+                     HttpMethod = "GET"
+                  },
+                  new {
+                     @class="skipForward"
+                  })
+         </div>
