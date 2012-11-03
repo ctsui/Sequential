@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+@model System.Exception
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sequential: Book Not Found</title>
+</head>
+<body>
+   <h1 style="text-align:center;padding-top:100px;">
+       The comic could not be found.
+   </h1>
+   <p style="text-align:center;">
+      Exception: @Model.Message
+   </p>
+   <p style="text-align:center;">
+      Oops. It looks like Sequential has not been fully configured to show any comics.
+      Has a SeqBook record been created and given a UriContext?
+   </p>
+</body>
+</html>

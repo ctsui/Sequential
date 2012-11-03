@@ -1,7 +1,6 @@
-﻿using System.Data.Linq;
-using System.Linq;
+﻿using System.Linq;
 using Sequential2013.Domain.Abstract;
-using Sequential2013.Domain;
+using Sequential2013.Domain.Concrete.Exception;
 
 namespace Sequential2013.Domain.Concrete {
 	public class SeqBooksRepository :ISeqBooksRepository {
@@ -20,14 +19,23 @@ namespace Sequential2013.Domain.Concrete {
 			return db.SeqBooks.SingleOrDefault(b => b.Title == title);
 		}
 
-		public SeqBook BookUriContext(string context) {
-			return db.SeqBooks.SingleOrDefault(b => b.UriContext == context);
+		public SeqBook BookUriContext(string context)
+      {
+			SeqBook sb = db.SeqBooks.SingleOrDefault(b => b.UriContext == context);
+         if (sb == null) 
+            throw new BookNotFoundException( "The book \""+context+"\" was "+
+                                             "not found.");
+         return sb;
 		}
 
-		public SeqChapter GetChapter(string context, int chapterNum)
+		public SeqChapter GetChapter(SeqBook book, int chapterNum) 
 		{
-			SeqBook book = BookUriContext(context);
-			return book.SeqChapters.SingleOrDefault(c => c.ChapterNum == chapterNum);
+         SeqChapter sc = book.SeqChapters.SingleOrDefault(
+                           c => c.ChapterNum == chapterNum);
+         if (sc == null)
+            throw new ChapterNotFoundException("Chapter \"" + chapterNum + 
+               "\" was not found for the book \"" + book.Title + "\"");
+         return sc;
 		}
 	}
 }

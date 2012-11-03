@@ -262,6 +262,12 @@
   <ItemGroup>
     <Content Include="Views\Tag\TagBlogPostNav.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\WebComic\BookNotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\WebComic\ChapterNotFound.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
