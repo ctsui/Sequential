@@ -77,6 +77,13 @@ namespace Sequential2013.WebUI
 					action = "RssFeed"
 				});
 
+         routes.MapRoute("WebcomicRss", "rss/comic/{comic}",
+            new
+            {
+               controller = "Webcomic",
+               action = "ComicRssFeed"
+            });
+
 			routes.MapRoute("WebcomicExplicit", 
                 "{comic}/chapter{chapter}/page{page}/{perma}/{id}",
 				new { 

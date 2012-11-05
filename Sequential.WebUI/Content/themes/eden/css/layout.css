@@ -269,6 +269,16 @@ a.leftArrow
    text-decoration:none;
 }
 
+a.rssIcon 
+{
+   display:inline-block;
+   width:38px;
+   height:38px;
+   background-image:url("../images/rss.png");
+   background-repeat:no-repeat;
+   text-decoration:none;
+}
+
 #blurb
 {
    padding:10px;

@@ -35,6 +35,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabases>false</PublishDatabases>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -138,6 +140,7 @@
     <Content Include="Content\themes\eden\images\OldParchmentCutOut.jpg" />
     <Content Include="Content\themes\eden\images\previous.png" />
     <Content Include="Content\themes\eden\images\rss.png" />
+    <Content Include="Content\themes\eden\images\skipBackward.png" />
     <Content Include="Content\themes\eden\images\skipForward.png" />
     <Content Include="Content\themes\eden\images\Twitter.png" />
     <Content Include="Content\themes\sputnikx\css\Failures.css" />
@@ -267,6 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\WebComic\ChapterNotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Sputnikx.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

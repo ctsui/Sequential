@@ -7,5 +7,6 @@ namespace Sequential2013.Domain.Abstract {
 		SeqBook GetBook(string title);
 		SeqBook BookUriContext(string context);
 		SeqChapter GetChapter(SeqBook book, int chapterNum);
+      IQueryable<SeqPage> GetRecentPages(string book, int numPages = 10);
 	}
 }

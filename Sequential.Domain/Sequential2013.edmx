@@ -49,6 +49,8 @@
     </Key>
     <Property Name="PageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PageNum" Type="smallint" Nullable="true" />
+    <Property Name="PubDate" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
     <Property Name="SeqChapterChapterId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SeqChapters">
@@ -58,8 +60,8 @@
     <Property Name="ChapterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ChapterNum" Type="int" Nullable="true" />
-    <Property Name="SeqBookBookId" Type="int" Nullable="false" />
     <Property Name="PageCount" Type="int" Nullable="false" />
+    <Property Name="SeqBookBookId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SeqBooks">
     <Key>
@@ -248,6 +250,8 @@
           <Property Type="Int32" Name="PageId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int16" Name="PageNum" Nullable="true" />
           <NavigationProperty Name="SeqChapter" Relationship="Sequential2013.SeqChapterSeqPage" FromRole="SeqPage" ToRole="SeqChapter" />
+          <Property Type="DateTime" Name="PubDate" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
           <Property Type="Int32" Name="SeqChapterChapterId" Nullable="false" />
           <NavigationProperty Name="SeqTags" Relationship="Sequential2013.SeqPageSeqTag" FromRole="SeqPage" ToRole="SeqTag" />
         </EntityType>
@@ -259,9 +263,9 @@
           <Property Type="String" Name="Title" Nullable="false" />
           <Property Type="Int32" Name="ChapterNum" Nullable="true" />
           <NavigationProperty Name="SeqBook" Relationship="Sequential2013.SeqBookSeqChapter" FromRole="SeqChapter" ToRole="SeqBook" />
+          <Property Type="Int32" Name="PageCount" Nullable="false" />
           <Property Type="Int32" Name="SeqBookBookId" Nullable="false" />
           <NavigationProperty Name="SeqPages" Relationship="Sequential2013.SeqChapterSeqPage" FromRole="SeqChapter" ToRole="SeqPage" />
-          <Property Type="Int32" Name="PageCount" Nullable="false" />
         </EntityType>
         <EntityType Name="SeqBook">
           <Key>
@@ -363,6 +367,8 @@
         <MappingFragment StoreEntitySet="SeqPages">
           <ScalarProperty Name="PageId" ColumnName="PageId" />
           <ScalarProperty Name="PageNum" ColumnName="PageNum" />
+          <ScalarProperty Name="PubDate" ColumnName="PubDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="SeqChapterChapterId" ColumnName="SeqChapterChapterId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -373,8 +379,8 @@
           <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="ChapterNum" ColumnName="ChapterNum" />
-          <ScalarProperty Name="SeqBookBookId" ColumnName="SeqBookBookId" />
           <ScalarProperty Name="PageCount" ColumnName="PageCount" />
+          <ScalarProperty Name="SeqBookBookId" ColumnName="SeqBookBookId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -473,9 +479,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Sequential2013" >
-        <EntityTypeShape EntityType="Sequential2013.SeqPage" Width="1.75" PointX="5.125" PointY="2.125" Height="1.9802864583333331" />
+        <EntityTypeShape EntityType="Sequential2013.SeqPage" Width="1.75" PointX="5.125" PointY="1.125" Height="1.9802864583333331" />
         <EntityTypeShape EntityType="Sequential2013.SeqChapter" Width="1.5" PointX="3" PointY="1.75" Height="2.3648893229166656" IsExpanded="true" />
-        <EntityTypeShape EntityType="Sequential2013.SeqBook" Width="1.5" PointX="0.75" PointY="1.5" Height="2.5571907552083331" />
+        <EntityTypeShape EntityType="Sequential2013.SeqBook" Width="1.5" PointX="0.75" PointY="1" Height="2.5571907552083331" />
         <AssociationConnector Association="Sequential2013.SeqBookSeqChapter">
           <ConnectorPoint PointX="2.25" PointY="2.9035953776041667" />
           <ConnectorPoint PointX="3" PointY="2.9035953776041667" />

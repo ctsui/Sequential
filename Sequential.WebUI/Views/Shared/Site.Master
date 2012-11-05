@@ -26,7 +26,7 @@
          <h1><%: Html.ActionLink("Story & Art by Carl Tsui", "Index", "Post")%></h1>
          <ul id="menu">              
             <li><%: Html.ActionLink("home", "Index", "Post")%></li>
-            <li><%: Html.ActionLink("comics", "ComicsGallery", "Post")%></li>
+            <!--<li><%: Html.ActionLink("comics", "ComicsGallery", "Post")%></li>-->
             <li><%: Html.ActionLink("subscribe", "RssFeed", "Post")%></li>
          </ul>
       </div>

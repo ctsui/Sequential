@@ -37,5 +37,12 @@ namespace Sequential2013.Domain.Concrete {
                "\" was not found for the book \"" + book.Title + "\"");
          return sc;
 		}
+      
+      public IQueryable<SeqPage> GetRecentPages(string book, int numPages=10)
+      {
+         return db.SeqPages.Where(p => p.SeqChapter.SeqBook.UriContext==book)
+                           .OrderByDescending(p => p.PubDate)
+                           .Take(numPages);
+      }
 	}
 }

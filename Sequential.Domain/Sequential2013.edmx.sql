@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/30/2012 19:58:44
+-- Date Created: 11/04/2012 17:05:15
 -- Generated from EDMX file: C:\Users\Carleton\Documents\GitHub\Sequential\Sequential.Domain\Sequential2013.edmx
 -- --------------------------------------------------
 
@@ -76,6 +76,8 @@ GO
 CREATE TABLE [dbo].[SeqPages] (
     [PageId] int IDENTITY(1,1) NOT NULL,
     [PageNum] smallint  NULL,
+    [PubDate] datetime  NOT NULL,
+    [Description] nvarchar(max)  NULL,
     [SeqChapterChapterId] int  NOT NULL
 );
 GO
@@ -85,8 +87,8 @@ CREATE TABLE [dbo].[SeqChapters] (
     [ChapterId] int IDENTITY(1,1) NOT NULL,
     [Title] nvarchar(max)  NOT NULL,
     [ChapterNum] int  NULL,
-    [SeqBookBookId] int  NOT NULL,
-    [PageCount] int  NOT NULL
+    [PageCount] int  NOT NULL,
+    [SeqBookBookId] int  NOT NULL
 );
 GO
 

@@ -97,13 +97,15 @@ public class PostController : Controller
 	/// Generates a RSS feed of the 10 most recent posts.
 	/// </summary>
 	/// <returns>RSS 2.0 feed</returns>
-	public ContentResult RssFeed(string feedName = null)
+	public virtual ContentResult RssFeed(string feedName = null)
 	{
 		Uri u = Request.RequestContext.HttpContext.Request.Url;
 		string applicationPath = Request.RequestContext
 													.HttpContext.Request
 													.ApplicationPath;
-		string linkUri = u.Scheme + "://" + u.Host + applicationPath;
+      string linkUri =  u.Scheme + "://" + u.Host +
+                        ((u.Port != 80 || u.Port != 443) ? ":" + u.Port : "") +
+                        applicationPath;
 		List<SeqPost> recentPosts = postsRep.GetPostPage(10, 1, blogId).ToList<SeqPost>();
 		string lastBuildDate = recentPosts.First().CreateDate.ToString();
 		string encoding = Response.ContentEncoding.WebName;

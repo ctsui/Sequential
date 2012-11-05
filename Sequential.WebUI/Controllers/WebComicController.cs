@@ -5,6 +5,9 @@ using System.Web;
 using System;
 using Sequential2013.Domain;
 using Sequential2013.Domain.Concrete.Exception;
+using System.Xml.Linq;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Sequential2013.WebUI.Controllers
 {
@@ -174,5 +177,70 @@ public class WebComicController : PostController
       return FullPathEntry(comic, lastChapter, lastPage, null, -1, true);
    }
 
+   /// <summary>
+	/// Generate a RSS feed of some of the most recent comic page posts. This is
+   /// different from recent accompanying blog posts which should use the 
+   /// RssFeed method.
+	/// </summary>
+   /// <param name="comic">The book UriContext value that is the short hand for
+   /// the comic for which to build this feed.</param>
+	/// <returns>RSS 2.0 feed of the 10 most recent pages of given book.</returns>
+   public virtual ContentResult ComicRssFeed(string comic)
+   {
+      Uri u = Request.RequestContext.HttpContext.Request.Url;
+      string applicationPath = Request.RequestContext
+                                       .HttpContext.Request
+                                       .ApplicationPath;
+      string buildDate = String.Format("{0:dddd, MMMM d, yyyy - h:mm tt}",
+                                       DateTime.Now);
+      //Fetch the last 10 pages updated order by desc pubDate; then make:
+      //title = Chapter {chapter num} - Page {page num}
+      //link = "{comic}/chapter{chapter}/page{page}/{perma}/{id}"
+      //(e.g. http://sputnikx.com/eden/chapter1/page4
+      //description = empty or page.Description
+      //Rss elements: http://www.ibm.com/developerworks/xml/library/x-rss20/
+      try
+      {
+         SeqBook book = booksRep.BookUriContext(comic);
+         List<SeqPage> recentPages = booksRep.GetRecentPages(comic)
+                                             .ToList<SeqPage>();
+         string linkUri =  u.Scheme + "://" + u.Host + 
+                           ((u.Port!=80 || u.Port!=443) ? ":"+u.Port : "") +
+                           applicationPath;
+         string encoding = Response.ContentEncoding.WebName;
+         string feedName = book.Title;
+         XDocument rss = new XDocument(
+            new XDeclaration("1.0", encoding, "yes"),
+            new XElement("rss", new XAttribute("version", "2.0"),
+               new XElement("channel", 
+                  new XElement("title", feedName),
+                  new XElement("link", linkUri),
+                  new XElement("description",book.Description),
+                  new XElement("language", "en-us"),
+                  new XElement("lastBuildDate",buildDate),
+                  new XElement("generator", "Sequential 2013"),
+                  from page in recentPages
+                  select new XElement("item",
+                     new XElement(  "title", 
+                                    "Chapter "+page.SeqChapter.ChapterNum+
+                                    " - Page "+page.PageNum),
+                     new XElement(  "link", 
+                                    linkUri + comic+"/chapter" +
+                                    page.SeqChapter.ChapterNum+ "/page" + 
+                                    page.PageNum),
+                     new XElement("description", page.Description),
+                     new XElement("pubDate", page.PubDate.ToString())
+                  ) //XElement item
+               ) //XElement channel
+            ) //XElement rss
+         ); //XDocument
+         return Content(rss.ToString(), "application/rss+xml");
+      }
+      catch (BookNotFoundException bnfe) 
+      {
+         return Content(bnfe.Message, "text/plain");
+      }
+      
+   }
 } //end class WebComicController
 } //end namespace

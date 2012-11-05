@@ -13,8 +13,7 @@ index page and partial pages. It has been included as an example of site master 
       <header id="pageHeader">
          <img id="logo" src="@Url.Content("~/content/themes/eden/images/EdenExpedition54.png")" />
          <div id="socialNetworks">
-            <img id="rss" width="32" height="32" src="@Url.Content("~/content/themes/eden/images/rss.png")" />
-            <!--<img id="twitter" width="32" height="32" src="@Url.Content("~/content/themes/eden/images/Twitter.png")" />-->
+            @Html.ActionLink(" ", "ComicRssFeed", "WebComic", new { }, new { @class = "rssIcon" });
          </div>
       </header>
       @RenderBody() 
