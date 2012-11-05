@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/8uP6z+KhEi2roqq1sn9UwAAAAACAAAAAAAQZgAAAAEAACAAAADg0fsKtrLeyxg/3A4ZvfClNShsDCdS85ZN1MDOmY92qgAAAAAOgAAAAAIAACAAAAA6o2+U4wS+vAbJVmpO5aB0whrkQF6oBQ3Mk2F8yE6aSiAAAAAo5qPlKHueIlFp7uz4pyI7ieS5TrIZz5wJAq4EN7aRTkAAAACvq3x/K0p13b6Jo1JtQfs6DDXA4x1Xx/k1DYyy7v1aNVFoJNdfrUMkbXuEiuDNUmvmFpVTI6IX86NNvg3w9naK</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/CookComputing.XmlRpcV2.dll">
+      <publishTime>10/30/2012 13:26:49</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>03/08/2012 08:20:10</publishTime>
+    </File>
+    <File Include="bin/Ninject.dll">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="bin/Sequential2013.Domain.dll">
+      <publishTime>11/03/2012 21:49:18</publishTime>
+    </File>
+    <File Include="bin/Sequential2013.WebUI.dll">
+      <publishTime>11/03/2012 21:49:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/05/2011 14:45:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/05/2011 16:42:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/05/2011 14:45:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/05/2011 14:45:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/05/2011 14:45:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>01/05/2011 14:45:38</publishTime>
+    </File>
+    <File Include="Content/comics/Eden/EdenC1P1.jpg">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/comics/Eden/EdenC1P2.jpg">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/comics/Eden/EdenC1P3.jpg">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/comics/Eden/EdenC1P4.jpg">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/comics/Inbound3.jpg">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/comics/Inbound4.jpg">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/comics/LeftOvers1.jpg">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/manifest/css/layout_ie7.css">
+      <publishTime>10/30/2012 23:25:44</publishTime>
+    </File>
+    <File Include="Content/manifest/css/WebLayout.css">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/manifest/images/Borders.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/manifest/images/StoryAndArtBannerFlat.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/manifest/rsd.xml">
+      <publishTime>11/03/2012 10:09:39</publishTime>
+    </File>
+    <File Include="Content/manifest/WebLayout_eden.html">
+      <publishTime>10/30/2012 23:37:18</publishTime>
+    </File>
+    <File Include="Content/manifest/WebPreview_eden.html">
+      <publishTime>10/30/2012 23:27:55</publishTime>
+    </File>
+    <File Include="Content/manifest/wlwmanifest.xml">
+      <publishTime>10/30/2012 23:34:44</publishTime>
+    </File>
+    <File Include="Content/themes/eden/css/layout.css">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/css/normalize.css">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/images/EdenExpedition54.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/images/next.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/images/oldMapOverlay.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/images/OldParchmentCutOut.jpg">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/images/previous.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/images/rss.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/images/skipForward.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/eden/images/Twitter.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/css/Failures.css">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/css/normalize.css">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/css/Site.css">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/css/webcomic.css">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/errorpages/Fail.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/errorpages/Fail404.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/images/BlueHR.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/images/Borders.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/images/CrashedSputnik.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Content/themes/sputnikx/images/StoryAndArtBannerFlat.png">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.intellisense.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.min.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.8.20.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.8.20.min.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate-vsdoc.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.5.3.js">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePassword.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePasswordSuccess.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Account/LogOn.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Category/AjaxPostsForCategory.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Category/CategoryBlogPostNav.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Category/PostsForCategory.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Post/AjaxPostPage.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Post/Comics.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Post/GetSinglePost.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Post/Index.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/Anthology.Master">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/BlogArticleTags.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/BlogCategories.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/BlogPost.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/BlogPostControl.ascx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/BlogPostNav.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/CategoryControl.ascx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/DisplayTemplates/Categories.ascx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/EdenLayout.cshtml">
+      <publishTime>10/30/2012 23:25:11</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/LinksControl.ascx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/LogOnUserControl.ascx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/Page.Master">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/PostNavControl.ascx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/Site.Master">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Shared/TagsControl.ascx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Tag/AjaxPostsForTag.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Tag/PostsForTag.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Tag/TagBlogPostNav.cshtml">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/WebComic/BookNotFound.cshtml">
+      <publishTime>11/02/2012 23:53:46</publishTime>
+    </File>
+    <File Include="Views/WebComic/ChapterNotFound.cshtml">
+      <publishTime>11/03/2012 00:01:07</publishTime>
+    </File>
+    <File Include="Views/WebComic/ComicNotFound.aspx">
+      <publishTime>10/30/2012 13:26:50</publishTime>
+    </File>
+    <File Include="Views/WebComic/Index.cshtml">
+      <publishTime>11/02/2012 23:03:16</publishTime>
+    </File>
+    <File Include="Views/WebComic/TurnPage.cshtml">
+      <publishTime>10/30/2012 23:14:46</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/03/2012 21:49:44</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
